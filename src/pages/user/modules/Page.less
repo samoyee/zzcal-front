@@ -1,0 +1,201 @@
+.page {
+    height: 100%;
+}
+
+.page-header {
+    color: #fff;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.page-content {
+    padding: 50px 50px 0 50px;
+}
+
+.page-content-layout {
+    height: calc(100vh - 160px);
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.page-content-overflow {
+    overflow: auto;
+}
+
+.page-content-main {
+    height: calc(100vh - 160px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #fff;
+    padding: 16px;
+
+    @media (min-width: 1024px) {
+        & {
+            min-width: 1032px;
+            overflow-x: auto;
+        }
+    }
+
+    h2 {
+        border-bottom: 1px solid #e6e6e6;
+        margin-bottom: 8px;
+        padding: 0 8px;
+        align-items: center;
+        line-height: 40px;
+    }
+
+    p {
+        color: #aaa;
+        margin-bottom: 8px;
+        padding: 0 8px;
+    }
+}
+
+.page-menu {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.page-footer {
+    text-align: center;
+    padding: 12px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+        color: #7b7b7b;
+        font-size: 12px;
+
+        &:hover {
+            color: #333;
+        }
+
+        &.police {
+            background-image: url("~images/police.png");
+            background-repeat: no-repeat;
+            background-position: 0 center;
+            background-size: 14px 14px;
+            padding-left: 16px;
+            margin-left: 16px;
+        }
+    }
+
+}
+
+
+.inner-nav {
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    width: 0%;
+    height: 100%;
+
+    .inner-nav__mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background-color: #000;
+        opacity: 0;
+        transition:
+            opacity 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86),
+            height 0s ease 0.3s;
+    }
+
+    .inner-nav__content-wrapper {
+        position: absolute;
+        transition: transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86),
+            opacity 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86),
+            box-shadow 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+        transform: translateX(-100%);
+    }
+
+    .inner-nav__content {
+        width: 215px;
+        height: 100%;
+        overflow: auto;
+    }
+
+    .inner-nav__handle {
+        position: absolute;
+        top: 72px;
+        width: 41px;
+        height: 40px;
+        cursor: pointer;
+        z-index: 0;
+        text-align: center;
+        line-height: 40px;
+        font-size: 16px;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        background: #fff;
+        color: #333;
+        right: -40px;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+        border-radius: 0 4px 4px 0;
+
+        .inner-nav__handle-icon {
+            width: 14px;
+            height: 2px;
+            background: #333;
+            position: relative;
+            transition: background 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+
+            &:before,
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
+                background: #333;
+                width: 100%;
+                height: 2px;
+                transition: transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+            }
+
+            &:before {
+                top: -5px;
+            }
+
+            &:after {
+                top: 5px;
+            }
+        }
+    }
+
+    &.inner-nav__open {
+        width: 100%;
+
+        .inner-nav__mask {
+            height: 100%;
+            opacity: 0.3;
+        }
+
+        .inner-nav__content-wrapper {
+            transform: translateX(0);
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+            height: 100%;
+        }
+
+        .inner-nav__handle-icon {
+            background: transparent;
+
+            &:before {
+                transform: translateY(5px) rotate(45deg);
+            }
+
+            &:after {
+                transform: translateY(-5px) rotate(-45deg);
+            }
+        }
+    }
+}
