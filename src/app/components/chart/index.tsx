@@ -12,20 +12,12 @@ const DataChart: React.FC<DataChartProps> = (props) => {
     const [chartType, setChartType] = useState<"single" | 'double'>("single");
     return data && <>
         <Radio.Group
-            options={[
-                {
-                    label: '单倍',
-                    value: "single",
-                },
-                {
-                    label: '双倍',
-                    value: "double",
-                },
-            ]}
-            optionType="button"
             value={chartType}
-            onChange={(e) => { setChartType(e.target.value) }}
-        />
+            onChange={(e) => { setChartType(e as "single" | 'double') }}
+        >
+            <Radio value="single">单倍</Radio>
+            <Radio value="double">双倍</Radio>
+        </Radio.Group>
         <Polar type={chartType} data={data} />
     </>
 }

@@ -26,7 +26,7 @@ export const sendPayment = async (outTradeNo: string, type: string) => {
 export const getPayStatus = (outTradeNo: string, delay = 3000) => {
     return new Promise((resolve, reject) => {
         if (!outTradeNo) reject("订单号不为空");
-        let timer: NodeJS.Timeout;
+        let timer: number;
         function loop() {
             if (timer) clearTimeout(timer);
             post({

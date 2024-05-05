@@ -1,9 +1,7 @@
 import React from 'react';
 import FormulaForm from '@/app/components/formula-form';
 import { useGetLocale } from '@/locale';
-import { useMergedState } from 'rc-util';
 import { Form } from 'antd-mobile';
-import { DeleteOutlined, FileOutlined, InboxOutlined } from '@ant-design/icons';
 import './index.less';
 import { post } from '@/service';
 import { auth } from '@/auth';
@@ -26,7 +24,7 @@ export const sendPayment = async (outTradeNo: string, type: string) => {
 export const getPayStatus = (outTradeNo: string, delay = 3000) => {
     return new Promise((resolve, reject) => {
         if (!outTradeNo) reject("订单号不为空");
-        let timer: NodeJS.Timeout;
+        let timer: number;
         function loop() {
             if (timer) clearTimeout(timer);
             post({

@@ -1,9 +1,9 @@
 import { useGetLocale } from '@/locale';
-import { post } from '@/service';
 import FormulaForm from '@/pc/components/formula-form';
 import NumberInput from '@/pc/components/number-input';
 import show from '@/pc/components/result';
-import { Col, Form, Row, Statistic, Typography } from 'antd';
+import { post } from '@/service';
+import { Col, Form, Row, Statistic } from 'antd';
 import React from 'react';
 
 const Formula: React.FC = () => {
