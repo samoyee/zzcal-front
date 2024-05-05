@@ -1,0 +1,5 @@
+{
+    "button": "开始计算",
+    "loading": "计算中...",
+    "required": "${label}是必填的！"
+}

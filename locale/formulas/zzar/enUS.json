@@ -1,0 +1,10 @@
+{
+    "title": "ZZ AR (Auto-compensation Refraction)",
+    "description": [
+        "Used to assist surgical strategy planning for Topo-Guide refractive surgery",
+        "By calculating the compensation diopter while correcting HOAs for virgin cornea"
+    ],
+    "selector": "Corneal posterior surface astigmatism available or not",
+    "yes": "Available",
+    "no": "Not"
+}

@@ -1,0 +1,30 @@
+html {
+    .layout-top-wrapper {
+        position: absolute;
+        z-index: 999;
+        right: 24px;
+        top: 12px;
+        display: flex;
+        align-items: center;
+
+        a {
+            font-size: 14px;
+            padding: 6px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.4s linear, color 0.4s linear;
+            margin-left: 12px;
+            color: #9b9b9b;
+
+            &:hover {
+                background-color: #f0f0f0;
+                color: #000;
+            }
+        }
+    }
+
+    .layout-page-wrapper {
+        height: 100vh;
+        overflow: hidden;
+    }
+}

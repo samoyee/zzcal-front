@@ -1,0 +1,5 @@
+{
+    "button": "Get Result",
+    "loading": "Loading...",
+    "required": "${label} is required!"
+}

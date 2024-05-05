@@ -1,0 +1,7 @@
+{
+    "title": "ZZ TICL Rotation",
+    "description": [
+        "辅助TICL植入后轴位误差的调整设计",
+        "当TICL植入后出现残留散光，计算如何旋转TICL可以最大程度降低残余散光"
+    ]
+}

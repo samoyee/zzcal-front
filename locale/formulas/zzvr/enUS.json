@@ -1,0 +1,7 @@
+{
+    "title": "ZZ VR (Vector-compensation Refraction)",
+    "description": [
+        "Used to assist surgical strategy planning for Topo-Guide / Wavefront-Guide refractive surgery",
+        "By calculating the compensation diopter while correcting HOAs for special treatment"
+    ]
+}
