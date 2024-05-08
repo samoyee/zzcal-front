@@ -1,36 +1,28 @@
 import * as d3 from "d3";
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 interface PolarProps {
     data: Array<[number, number, string]>
-    type: 'single' | 'double';
+    maxAngle: number;
 }
 
-const width = 440;
-const height = 440;
+const width = 420;
+const height = 420;
 const radius = 120;
 
 const Polar: React.FC<PolarProps> = (props) => {
-    const { type } = props;
-    const wrapper = useRef<SVGSVGElement>(null);
-    const inner = useRef<{
+    const { data, maxAngle } = props;
+    const svgRef = useRef<SVGSVGElement>(null);
+    const targetRef = useRef<{
         graph: d3.Selection<SVGGElement, unknown, null, undefined>,
         defs: d3.Selection<SVGDefsElement, unknown, null, undefined>,
         color: d3.ScaleOrdinal<string, string, never>,
         angle: d3.ScaleLinear<number, number, never>,
     }>();
 
-    const data: Array<[number, number, string]> = useMemo(() => {
-        return props.data.map((item) => {
-            let [cyl, axis, name] = item;
-            axis = cyl > 0 ? (axis <= 90 ? axis + 90 : axis - 90) : axis;
-            return [Math.abs(cyl), (type == "single" ? 1 : 2) * axis, name];
-        });
-    }, [type, props.data]);
-
     useEffect(() => {
-        if (wrapper.current) {
-            const chart = d3.select(wrapper.current);
+        if (svgRef.current) {
+            const chart = d3.select(svgRef.current);
             chart
                 .attr('width', width)
                 .attr('height', height)
@@ -46,7 +38,7 @@ const Polar: React.FC<PolarProps> = (props) => {
                 .domain([0, -360])
                 .range([Math.PI / 2, (5 / 2) * Math.PI]);
 
-            inner.current = {
+            targetRef.current = {
                 graph,
                 defs,
                 color,
@@ -56,11 +48,10 @@ const Polar: React.FC<PolarProps> = (props) => {
     }, [])
 
     useEffect(() => {
-        if (!inner.current) return;
-        const { graph, defs, color, angle } = inner.current;
+        if (!targetRef.current) return;
+        const { graph, defs, color, angle } = targetRef.current;
         graph.selectAll("*").remove();
         defs.selectAll("*").remove();
-        const maxAngle = type === 'single' ? 180 : 360;
 
         let max = d3.max(data, (d) => d[0]) || 0;
         max = Math.max(1, Math.floor(max) + 1);
@@ -184,9 +175,9 @@ const Polar: React.FC<PolarProps> = (props) => {
             .attr("y", (_, index) => labelHeight * index * 1.8 + labelHeight + 3)
             .style("font-size", `${labelHeight}px`)
             .text((d) => d[2]);
-    }, [data]);
+    }, [data, maxAngle]);
 
-    return <svg ref={wrapper} className="polar" />;
+    return <svg ref={svgRef} className="polar" />;
 }
 
 export default Polar;

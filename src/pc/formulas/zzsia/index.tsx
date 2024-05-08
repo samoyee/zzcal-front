@@ -1,10 +1,10 @@
-import { Col, Form, Row, Statistic } from 'antd';
-import React from 'react';
-import NumberInput from '@/pc/components/number-input';
-import FormulaForm from '@/pc/components/formula-form';
 import { useGetLocale } from '@/locale';
+import FormulaForm from '@/pc/components/formula-form';
+import NumberInput from '@/pc/components/number-input';
 import show from '@/pc/components/result';
 import { post } from '@/service';
+import { Col, Form, Row, Statistic } from 'antd';
+import React from 'react';
 
 const Formula: React.FC = () => {
     const getLocale = useGetLocale('zzsia')
@@ -34,23 +34,26 @@ const Formula: React.FC = () => {
             <Form.Item
                 noStyle
                 name="maniSph"
+                label="Mani Sph"
                 rules={[{ required: true }]}
             >
-                <NumberInput placeholder='sph' suffix="D" />
+                <NumberInput placeholder='Sph' suffix="D" />
             </Form.Item>
             <Form.Item
                 noStyle
                 name="maniCyl"
+                label="Mani Cyl"
                 rules={[{ required: true }]}
             >
-                <NumberInput placeholder='cyl' suffix="D" />
+                <NumberInput placeholder='Cyl' suffix="D" />
             </Form.Item>
             <Form.Item
                 noStyle
                 name="maniCylAxis"
+                label="Mani Axis"
                 rules={[{ required: true }]}
             >
-                <NumberInput placeholder='axis' />
+                <NumberInput placeholder='Axis' />
             </Form.Item>
         </Form.Item>
         <Form.Item

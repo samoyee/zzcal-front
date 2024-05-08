@@ -1,9 +1,9 @@
 import { useGetLocale } from '@/locale';
-import { post } from '@/service';
 import DataChart from '@/pc/components/chart';
 import FormulaForm from '@/pc/components/formula-form';
 import NumberInput from '@/pc/components/number-input';
 import show from '@/pc/components/result';
+import { post } from '@/service';
 import { Col, Form, Radio, Row, Statistic } from 'antd';
 import React from 'react';
 
@@ -138,10 +138,11 @@ const Formula: React.FC = () => {
                     </Form.Item>
                 </>}
         </Form.Item>
-        <Form.Item label="TMR">
+        <Form.Item label="TMR" required>
             <Form.Item
                 noStyle
                 name="tmrc"
+                label="TMR Cyl"
                 rules={[
                     { required: true },
                     { type: 'number', max: 0 }
@@ -152,6 +153,7 @@ const Formula: React.FC = () => {
             <Form.Item
                 noStyle
                 name="tmra"
+                label="TMR Axis"
                 rules={[{ required: true }]}
             >
                 <NumberInput placeholder='Axis' />

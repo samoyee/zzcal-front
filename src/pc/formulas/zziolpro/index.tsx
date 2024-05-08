@@ -1,16 +1,17 @@
-import React from 'react';
-import FormulaForm from '@/pc/components/formula-form';
-import { useGetLocale } from '@/locale';
-import { useMergedState } from 'rc-util';
-import { Form, Upload } from 'antd';
-import { DeleteOutlined, FileOutlined, InboxOutlined } from '@ant-design/icons';
-import './index.less';
-import { post } from '@/service';
 import { auth } from '@/auth';
+import { useGetLocale } from '@/locale';
+import FormulaForm from '@/pc/components/formula-form';
+import { post } from '@/service';
+import { DeleteOutlined, FileOutlined, InboxOutlined } from '@ant-design/icons';
+import { Form, Upload } from 'antd';
 import dayjs from 'dayjs';
+import { useMergedState } from 'rc-util';
+import React from 'react';
+import './index.less';
 
-export const sendPayment = async (outTradeNo: string, type: string) => {
+const sendPayment = async (outTradeNo: string, type: string) => {
     const data = await post({ url: '/pay/pay', data: { outTradeNo, type } });
+    if (!data) throw "PAY_ERROR";
     const dom = document.createElement("div");
     document.body.append(dom);
     dom.innerHTML = (data as string)
@@ -20,13 +21,15 @@ export const sendPayment = async (outTradeNo: string, type: string) => {
         form.setAttribute("target", "_blank");
         form.submit();
         dom.remove();
+        return getPayStatus(outTradeNo);
     }
+    throw "PAY_ERROR";
 };
 
-export const getPayStatus = (outTradeNo: string, delay = 3000) => {
+const getPayStatus = (outTradeNo: string, delay = 3000) => {
     return new Promise((resolve, reject) => {
-        if (!outTradeNo) reject("订单号不为空");
-        let timer: number;
+        if (!outTradeNo) reject("EMPTY_TRADE_NO");
+        let timer: NodeJS.Timeout;
         function loop() {
             if (timer) clearTimeout(timer);
             post({
@@ -37,9 +40,9 @@ export const getPayStatus = (outTradeNo: string, delay = 3000) => {
                     const { status } = data as any;
                     if (status === "WAIT_BUYER_PAY") timer = setTimeout(loop, delay);
                     else if (status === "TRADE_SUCCESS") resolve(status);
-                    else reject('支付失败');
+                    else reject('PAY_FAIL');
                 })
-                .catch(() => reject('支付失败'));
+                .catch(() => reject('PAY_FAIL'));
         }
         loop();
     });
@@ -51,23 +54,33 @@ const Formula: React.FC = () => {
         title={getLocale('title')}
         description={getLocale('description')}
         request={async (data) => {
-            const formData = new FormData();
-            for (let key in data) {
-                formData.append(key, data[key])
-            }
-            const userId = auth.getToken();
-            const outTradeNo = dayjs().format("YYYYMMDDHHmmssSSS");
-            sendPayment(outTradeNo, 'IOL');
-            formData.append('userId', `${userId || ''}`);
-            formData.append('type', "IOL");
-            const result = await post({
-                url: '/pay/fileUpload',
-                data: formData,
-                headers: {
-                    'content-type': "multipart/form-data"
+            try {
+                const formData = new FormData();
+                for (let key in data) {
+                    formData.append(key, data[key])
                 }
-            })
-            console.log(result);
+                const userId = auth.getToken();
+                const outTradeNo = dayjs().format("YYYYMMDDHHmmssSSS");
+                await sendPayment(outTradeNo, 'IOL');
+                formData.append('userId', `${userId || ''}`);
+                formData.append('type', "IOL");
+                const result = await post({
+                    url: '/pay/fileUpload',
+                    data: formData,
+                    headers: {
+                        'content-type': "multipart/form-data"
+                    }
+                })
+                console.log(result);
+            } catch (err) {
+                if (typeof err === 'string') {
+                    const message = getLocale(err);
+                    if (message)
+                        throw message;
+                }
+                throw err;
+            }
+
         }}
     >
         <Form.Item name="file" rules={[{ required: true }]}>
@@ -85,6 +98,7 @@ const File: React.FC<{ value?: File; onChange?: (value?: File) => void }> = (pro
             props.onChange?.(value);
         }
     })
+    const getLocale = useGetLocale('zziolpro')
     return <Upload.Dragger
         showUploadList={false}
         beforeUpload={() => {
@@ -115,8 +129,8 @@ const File: React.FC<{ value?: File; onChange?: (value?: File) => void }> = (pro
                 </div> :
                 <>
                     <p className="ant-upload-drag-icon"><InboxOutlined /></p>
-                    <p className="ant-upload-text">Click or drag file to this area to upload</p>
-                    <p className="ant-upload-hint">Support for a single or bulk upload.</p>
+                    <p className="ant-upload-text">{getLocale("clickToUpload")}</p>
+                    <p className="ant-upload-hint">{getLocale('supportZcs')}</p>
                 </>
         }
     </Upload.Dragger>

@@ -1,10 +1,10 @@
-import { Col, Form, Row, Statistic } from 'antd';
-import React from 'react';
-import NumberInput from '@/pc/components/number-input';
-import FormulaForm from '@/pc/components/formula-form';
 import { useGetLocale } from '@/locale';
+import FormulaForm from '@/pc/components/formula-form';
+import NumberInput from '@/pc/components/number-input';
 import show from '@/pc/components/result';
 import { post } from '@/service';
+import { Col, Form, Row, Statistic } from 'antd';
+import React from 'react';
 
 const Formula: React.FC = () => {
     const getLocale = useGetLocale('zzticlrotation');
@@ -39,10 +39,11 @@ const Formula: React.FC = () => {
             )
         })}
     >
-        <Form.Item label="Mani">
+        <Form.Item label="Mani" required>
             <Form.Item
                 noStyle
                 name="maniS"
+                label="Mani Sph"
                 rules={[{ required: true }]}
             >
                 <NumberInput placeholder='Sph' suffix="D" />
@@ -50,6 +51,7 @@ const Formula: React.FC = () => {
             <Form.Item
                 noStyle
                 name="maniC"
+                label="Mani Cyl"
                 rules={[{ required: true }]}
             >
                 <NumberInput placeholder='Cyl' suffix="D" />
@@ -57,15 +59,17 @@ const Formula: React.FC = () => {
             <Form.Item
                 noStyle
                 name="maniAx"
+                label="Mani Axis"
                 rules={[{ required: true }]}
             >
                 <NumberInput placeholder='Axis' />
             </Form.Item>
         </Form.Item>
-        <Form.Item label="Residual">
+        <Form.Item label="Residual" required>
             <Form.Item
                 noStyle
                 name="resiSph"
+                label="Residual Sph"
                 rules={[{ required: true }]}
             >
                 <NumberInput placeholder='Sph' suffix="D" />
@@ -73,6 +77,7 @@ const Formula: React.FC = () => {
             <Form.Item
                 noStyle
                 name="resiCyl"
+                label="Residual Cyl"
                 rules={[{ required: true }]}
             >
                 <NumberInput placeholder='Cyl' suffix="D" />
@@ -80,6 +85,7 @@ const Formula: React.FC = () => {
             <Form.Item
                 noStyle
                 name="resiCylAxis"
+                label="Residual Axis"
                 rules={[{ required: true }]}
             >
                 <NumberInput placeholder='Axis' />

@@ -1,6 +1,6 @@
 import { useGetLocale } from '@/locale';
 import { LoadingOutlined } from '@ant-design/icons';
-import { Button, Form, Spin } from 'antd';
+import { Button, Form, Spin, message } from 'antd';
 import React, { PropsWithChildren, useState } from 'react';
 import './style.less';
 
@@ -16,6 +16,7 @@ const FormulaForm: React.FC<FormulaFormProps & PropsWithChildren> = (props) => {
     const [form] = Form.useForm();
     const [loading, setLoading] = useState(false);
     const getLocale = useGetLocale('formula-form');
+    const [msg, contextHolder] = message.useMessage();
 
     async function onSubmit() {
         try {
@@ -24,11 +25,15 @@ const FormulaForm: React.FC<FormulaFormProps & PropsWithChildren> = (props) => {
             await props.request(data);
             setLoading(false);
         } catch (err) {
+            if (typeof err === 'string') {
+                msg.error({ content: err, key: 'FORM_REQUEST_ERROR', duration: 2000 })
+            }
             setLoading(false);
         }
     }
 
     return <>
+        {contextHolder}
         <Spin wrapperClassName='formula-form-spin' spinning={loading} indicator={<Loading text={getLocale('loading')} />}>
             <h1 className='formula-form-title'>{title}</h1>
             <div className='formula-form-content'>

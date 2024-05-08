@@ -1,8 +1,8 @@
 import { useGetLocale } from '@/locale';
-import show from '@/pc/components/result';
-import { post } from '@/service';
 import FormulaForm from '@/pc/components/formula-form';
 import NumberInput from '@/pc/components/number-input';
+import show from '@/pc/components/result';
+import { post } from '@/service';
 import { Col, Form, Row, Statistic } from 'antd';
 import React from 'react';
 

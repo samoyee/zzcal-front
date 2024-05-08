@@ -1,11 +1,11 @@
-import { Col, Form, Row, Select, Statistic } from 'antd';
-import React from 'react';
-import NumberInput from '@/pc/components/number-input';
-import FormulaForm from '@/pc/components/formula-form';
 import { useGetLocale } from '@/locale';
+import DataChart from '@/pc/components/chart';
+import FormulaForm from '@/pc/components/formula-form';
+import NumberInput from '@/pc/components/number-input';
 import show from '@/pc/components/result';
 import { post } from '@/service';
-import DataChart from '@/pc/components/chart';
+import { Col, Form, Row, Select, Statistic } from 'antd';
+import React from 'react';
 
 const { Option } = Select;
 
@@ -52,38 +52,38 @@ const Formula: React.FC = () => {
         })}
     >
         <Form.Item name="version" label="Version">
-            <Select>
+            <Select style={{ width: 100 }}>
                 <Option value="1.0">v 1.0</Option>
                 <Option value="1.1">v 1.1</Option>
             </Select>
         </Form.Item>
-        <Form.Item name="opicZone" label="Opic Zone">
+        <Form.Item name="opicZone" label="Opic Zone" rules={[{ required: true }]}>
             <NumberInput suffix="mm" />
         </Form.Item>
-        <Form.Item name="c7" label="C7">
+        <Form.Item name="c7" label="C7" rules={[{ required: true }]}>
             <NumberInput suffix="μm" />
         </Form.Item>
-        <Form.Item name="c8" label="C8">
+        <Form.Item name="c8" label="C8" rules={[{ required: true }]}>
             <NumberInput suffix="μm" />
         </Form.Item>
-        <Form.Item name="c11" label="C11">
+        <Form.Item name="c11" label="C11" rules={[{ required: true }]}>
             <NumberInput suffix="μm" />
         </Form.Item>
-        <Form.Item name="c12" label="C12">
+        <Form.Item name="c12" label="C12" rules={[{ required: true }]}>
             <NumberInput suffix="μm" />
         </Form.Item>
-        <Form.Item name="c13" label="C13">
+        <Form.Item name="c13" label="C13" rules={[{ required: true }]}>
             <NumberInput suffix="μm" />
         </Form.Item>
         <Form.Item label="Mani" required>
-            <Form.Item noStyle name="maniSph">
-                <NumberInput placeholder='sph' suffix="D" />
+            <Form.Item noStyle name="maniSph" label="Mani Sph" rules={[{ required: true }]}>
+                <NumberInput placeholder='Sph' suffix="D" />
             </Form.Item>
-            <Form.Item noStyle name="maniCyl">
-                <NumberInput placeholder='cyl' suffix="D" />
+            <Form.Item noStyle name="maniCyl" label="Mani Cyl" rules={[{ required: true }]}>
+                <NumberInput placeholder='Cyl' suffix="D" />
             </Form.Item>
-            <Form.Item noStyle name="maniCylAxis">
-                <NumberInput placeholder='axis' />
+            <Form.Item noStyle name="maniCylAxis" label="Mani Axis" rules={[{ required: true }]}>
+                <NumberInput placeholder='Axis' />
             </Form.Item>
         </Form.Item>
     </FormulaForm>

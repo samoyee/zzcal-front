@@ -1,8 +1,8 @@
 import { useGetLocale } from '@/locale';
-import show from '@/pc/components/result';
-import { post } from '@/service';
 import FormulaForm from '@/pc/components/formula-form';
 import NumberInput from '@/pc/components/number-input';
+import show from '@/pc/components/result';
+import { post } from '@/service';
 import { Col, Form, Row, Statistic } from 'antd';
 import React from 'react';
 
@@ -28,20 +28,22 @@ const Formula: React.FC = () => {
             )
         })}
     >
-        <Form.Item label="Mani">
+        <Form.Item label="Mani" required>
             <Form.Item
                 noStyle
                 name="maniS"
+                label="Mani Sph"
                 rules={[{ required: true }]}
             >
-                <NumberInput placeholder='sph' suffix="D" />
+                <NumberInput placeholder='Sph' suffix="D" />
             </Form.Item>
             <Form.Item
                 noStyle
                 name="maniC"
+                label="Mani Cyl"
                 rules={[{ required: true }]}
             >
-                <NumberInput placeholder='cyl' suffix="D" />
+                <NumberInput placeholder='Cyl' suffix="D" />
             </Form.Item>
         </Form.Item>
         <Form.Item
@@ -54,6 +56,7 @@ const Formula: React.FC = () => {
         <Form.Item
             name="ct"
             label="CT"
+            rules={[{ required: true }]}
         >
             <NumberInput suffix="μm" />
         </Form.Item>

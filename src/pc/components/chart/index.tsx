@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import Polar from "./Polar";
+import { useGetLocale } from "@/locale";
 import { Radio } from "antd";
+import React, { useMemo, useState } from "react";
+import Polar from "./Polar";
 import './style.less';
 
 interface DataChartProps {
@@ -8,17 +9,26 @@ interface DataChartProps {
 }
 
 const DataChart: React.FC<DataChartProps> = (props) => {
-    const { data } = props;
     const [chartType, setChartType] = useState<"single" | 'double'>("single");
-    return data && <>
+    const getLocale = useGetLocale("chart");
+
+    const data: Array<[number, number, string]> = useMemo(() => {
+        return props.data.map((item) => {
+            let [cyl, axis, name] = item;
+            axis = cyl > 0 ? (axis <= 90 ? axis + 90 : axis - 90) : axis;
+            return [Math.abs(cyl), (chartType == "single" ? 1 : 2) * axis, name];
+        });
+    }, [chartType, props.data])
+
+    return <>
         <Radio.Group
             options={[
                 {
-                    label: '单倍',
+                    label: getLocale('single'),
                     value: "single",
                 },
                 {
-                    label: '双倍',
+                    label: getLocale('double'),
                     value: "double",
                 },
             ]}
@@ -26,7 +36,10 @@ const DataChart: React.FC<DataChartProps> = (props) => {
             value={chartType}
             onChange={(e) => { setChartType(e.target.value) }}
         />
-        <Polar type={chartType} data={data} />
+        <Polar
+            data={data} 
+            maxAngle={chartType === 'single' ? 180 : 360}
+        />
     </>
 }
 

@@ -1,10 +1,10 @@
+import { useGetLocale } from '@/locale';
+import FormulaForm from '@/pc/components/formula-form';
+import NumberInput from '@/pc/components/number-input';
+import show from '@/pc/components/result';
+import { post } from '@/service';
 import { Col, Form, Row, Statistic } from 'antd';
 import React from 'react';
-import NumberInput from '@/pc/components/number-input';
-import FormulaForm from '@/pc/components/formula-form';
-import { useGetLocale } from '@/locale';
-import { post } from '@/service';
-import show from '@/pc/components/result';
 
 const Formula: React.FC = () => {
     const getLocale = useGetLocale('zzinnoveyes');
@@ -72,12 +72,13 @@ const Formula: React.FC = () => {
                 </Form.Item>
             }
         </Form.Item>
-        <Form.Item label="Mani" dependencies={['age']}>
+        <Form.Item label="Mani" dependencies={['age']} required>
             {({ getFieldValue, setFieldValue }) =>
                 <>
                     <Form.Item
                         noStyle
                         name="manis"
+                        label="Mani Sph"
                         rules={[{ required: true }]}>
                         <NumberInput
                             placeholder='Sph'
@@ -103,6 +104,7 @@ const Formula: React.FC = () => {
                     <Form.Item
                         noStyle
                         name="manic"
+                        label="Mani Cyl"
                         rules={[{ required: true }]}>
                         <NumberInput
                             placeholder='Cyl'
@@ -112,62 +114,71 @@ const Formula: React.FC = () => {
                 </>
             }
         </Form.Item>
-        <Form.Item label="4mm">
+        <Form.Item label="4mm" required>
             <Form.Item
                 noStyle
                 name="mms"
+                label="4mm Sph"
                 rules={[{ required: true }]}>
                 <NumberInput placeholder='Sph' />
             </Form.Item>
             <Form.Item
                 noStyle
                 name="mmc"
+                label="4mm Cyl"
                 rules={[{ required: true }]}>
                 <NumberInput placeholder='Cyl' />
             </Form.Item>
             <Form.Item
                 noStyle
                 name="mmax"
+                label="4mm Axis"
                 rules={[{ required: true }]}>
                 <NumberInput placeholder='Axis' />
             </Form.Item>
         </Form.Item>
-        <Form.Item label="Def-Detail">
+        <Form.Item label="Def-Detail" required>
             <Form.Item
                 noStyle
                 name="defdetails"
+                label="Def-Detail Sph"
                 rules={[{ required: true }]}>
                 <NumberInput placeholder='Sph' />
             </Form.Item>
             <Form.Item
                 noStyle
                 name="defdetailc"
+                label="Def-Detail Cyl"
                 rules={[{ required: true }]}>
                 <NumberInput placeholder='Cyl' />
             </Form.Item>
             <Form.Item
                 noStyle
                 name="defdetailax"
+                label="Def-Detail Axis"
                 rules={[{ required: true }]}>
                 <NumberInput placeholder='Axis' />
             </Form.Item>
         </Form.Item>
-        <Form.Item label="Target Refrection">
+        <Form.Item label="Target Refrection" required>
             <Form.Item
                 noStyle
                 name="refrectiona"
+                label="Target Refrection Sph"
                 rules={[{ required: true }]}>
                 <NumberInput placeholder='Sph' precision={2} />
             </Form.Item>
             <Form.Item
                 noStyle
                 name="refrectionb"
+                label="Target Refrection Cyl"
                 rules={[{ required: true }]}>
                 <NumberInput placeholder='Cyl' />
             </Form.Item>
             <Form.Item
                 noStyle
                 name="refrectionc"
+                label="Target Refrection Axis"
                 rules={[{ required: true }]}>
                 <NumberInput placeholder='Axis' />
             </Form.Item>

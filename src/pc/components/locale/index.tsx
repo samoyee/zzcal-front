@@ -1,7 +1,7 @@
+import { useLocale } from '@/locale';
 import classnames from 'classnames';
 import React from 'react';
 import './style.less';
-import { useLocale } from '@/locale';
 
 const Locale: React.FC = () => {
     const [locale, setLocale] = useLocale();

@@ -1,10 +1,10 @@
-import { Col, Form, Row, Statistic } from 'antd';
-import React from 'react';
-import NumberInput from '@/pc/components/number-input';
-import FormulaForm from '@/pc/components/formula-form';
 import { useGetLocale } from '@/locale';
+import FormulaForm from '@/pc/components/formula-form';
+import NumberInput from '@/pc/components/number-input';
 import show from '@/pc/components/result';
 import { post } from '@/service';
+import { Col, Form, Row, Statistic } from 'antd';
+import React from 'react';
 
 const Formula: React.FC = () => {
     const getLocale = useGetLocale('zzqd');

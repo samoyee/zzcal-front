@@ -1,10 +1,10 @@
-import { Col, Form, Row, Statistic } from 'antd';
-import React from 'react';
-import NumberInput from '@/pc/components/number-input';
-import FormulaForm from '@/pc/components/formula-form';
 import { useGetLocale } from '@/locale';
+import FormulaForm from '@/pc/components/formula-form';
+import NumberInput from '@/pc/components/number-input';
 import show from '@/pc/components/result';
 import { post } from '@/service';
+import { Col, Form, Row, Statistic } from 'antd';
+import React from 'react';
 
 const Formula: React.FC = () => {
     const getLocale = useGetLocale('zzvrpro')
@@ -52,14 +52,14 @@ const Formula: React.FC = () => {
             <NumberInput suffix="μm" />
         </Form.Item>
         <Form.Item label="Mani" required>
-            <Form.Item noStyle name="maniSph">
-                <NumberInput placeholder='sph' suffix="D" />
+            <Form.Item noStyle name="maniSph" label="Mani Sph" rules={[{ required: true }]}>
+                <NumberInput placeholder='Sph' suffix="D" />
             </Form.Item>
-            <Form.Item noStyle name="maniCyl">
-                <NumberInput placeholder='cyl' suffix="D" />
+            <Form.Item noStyle name="maniCyl" label="Mani Cyl" rules={[{ required: true }]}>
+                <NumberInput placeholder='Cyl' suffix="D" />
             </Form.Item>
-            <Form.Item noStyle name="maniCylAxis">
-                <NumberInput placeholder='axis' />
+            <Form.Item noStyle name="maniCylAxis" label="Mani Axis" rules={[{ required: true }]}>
+                <NumberInput placeholder='Axis' />
             </Form.Item>
         </Form.Item>
     </FormulaForm>

@@ -1,11 +1,11 @@
 import { useGetLocale } from '@/locale';
-import show from '@/pc/components/result';
-import { post } from '@/service';
-import { MinusCircleOutlined, PlusCircleOutlined } from '@ant-design/icons';
 import FormulaForm from '@/pc/components/formula-form';
 import NumberInput from '@/pc/components/number-input';
+import show from '@/pc/components/result';
+import { post } from '@/service';
 import { Col, Form, Row, Statistic, Upload, message } from 'antd';
 import React from 'react';
+import './index.less';
 
 const Formula: React.FC = () => {
     const getLocale = useGetLocale('zzmeansdvector');
@@ -78,16 +78,20 @@ const Formula: React.FC = () => {
                         </Form.Item>
                         <Form.Item noStyle>
                             {fields.length > 1 && (
-                                <MinusCircleOutlined
-                                    className="calc-form-icon"
+                                <a
+                                    className="zz-mean-control"
                                     onClick={() => remove(field.name)}
-                                />
+                                >
+                                    {getLocale('remove')}
+                                </a>
                             )}
                             {index === fields.length - 1 && (
-                                <PlusCircleOutlined
-                                    className="calc-form-icon"
+                                <a
+                                    className="zz-mean-control"
                                     onClick={() => add()}
-                                />
+                                >
+                                    {getLocale('add')}
+                                </a>
                             )}
                         </Form.Item>
                     </Form.Item>)}
@@ -97,7 +101,7 @@ const Formula: React.FC = () => {
         <Form.Item noStyle dependencies={[]}>
             {({ setFieldValue }) => (
                 <div>
-                    您还可以从模板文件导入参数（<a href="/file/zzmean.xlsx" target="_blank">zz_mean.xlsx</a>），点击
+                    {getLocale('uploadTips')}（<a href="/file/zzmean.xlsx" target="_blank">zz_mean.xlsx</a>），
                     <Upload showUploadList={false} action="/api/calculate/zzmeanexcel" name='file' onChange={({ file }) => {
                         if (file.status === 'done') {
                             msg.destroy('ZZ_MEAN_KEY');
@@ -106,10 +110,10 @@ const Formula: React.FC = () => {
                                 setFieldValue('zzMeanInfos', data?.zzMeanInfos)
                             }
                         } else {
-                            msg.loading({ content: '加载中。。。', key: 'ZZ_MEAN_KEY' })
+                            msg.loading({ content: getLocale("loading"), key: 'ZZ_MEAN_KEY' })
                         }
                     }}>
-                        <a>上传</a>
+                        <a>{getLocale('btnUpload')}</a>
                     </Upload>
                 </div>
             )}
