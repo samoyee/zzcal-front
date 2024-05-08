@@ -1,4 +1,12 @@
 {
     "title": "ZZ IOL Pro",
-    "description": "Selection of various corneal IOL<br>Upload the value of A constant, Target D, AL, LT and the raw data of corneal tomographic is needed"
+    "description": [
+        "Selection of various corneal IOL",
+        "Upload the value of A constant, Target D, AL, LT and the raw data of corneal tomographic is needed"
+    ],
+    "PAY_ERROR": "Pay error",
+    "EMPTY_TRADE_NO": "Trade No cannot be empty",
+    "PAY_FAIL": "Pay failed",
+    "clickToUpload": "Click or drag file to this area to upload",
+    "supportZcs": "Only support .zcs"
 }

@@ -1,4 +1,9 @@
 {
     "title": "ZZ IOL Pro",
-    "description": "辅助任何角膜形态IOL屈光度的选择，需要上传A常数、目标屈光度、眼轴长度、晶体厚度和角膜断层扫描图的原始文档"
+    "description": "辅助任何角膜形态IOL屈光度的选择，需要上传A常数、目标屈光度、眼轴长度、晶体厚度和角膜断层扫描图的原始文档",
+    "PAY_ERROR": "支付遇到错误，请稍后再试",
+    "EMPTY_TRADE_NO": "订单号不为空",
+    "PAY_FAIL": "支付失败",
+    "clickToUpload": "点击或拖拽到这个区域上传",
+    "supportZcs": "仅支持.zcs文件上传"
 }

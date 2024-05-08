@@ -1,4 +1,9 @@
 {
     "title": "ZZ矢量屈光度均数和标准差",
-    "description": "用于计算多个屈光度的均值和标准差"
+    "description": "用于计算多个屈光度的均值和标准差",
+    "uploadTips": "您还可以从模板文件导入参数",
+    "btnUpload": "点击上传",
+    "add": "新增",
+    "remove": "删除",
+    "loading": "加载中..."
 }

@@ -1,4 +1,9 @@
 {
     "title": "ZZ Mean ± SD (Standard Deviation) of Vector-refraction",
-    "description": "Used to calculate the Mean ± SD of multiple diopters"
+    "description": "Used to calculate the Mean ± SD of multiple diopters",
+    "uploadTips": "You can upload xlsx to import params",
+    "btnUpload": "Upload",
+    "add": "Add",
+    "remove": "Remove",
+    "loading": "Loading..."
 }

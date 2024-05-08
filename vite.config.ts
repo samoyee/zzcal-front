@@ -5,13 +5,18 @@ import dynamicImport from 'vite-plugin-dynamic-import';
 import locale from './plugins/locale';
 
 export default defineConfig({
-  plugins: [react(), dynamicImport(), locale()],
+  plugins: [
+    react(),
+    dynamicImport(),
+    locale(),
+    
+  ],
   css: {
     preprocessorOptions: {
       less: {
         math: 'parens-division'
       },
-    }
+    },
   },
   server: {
     proxy: {

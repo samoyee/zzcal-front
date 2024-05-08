@@ -1,5 +1,5 @@
-import { Suspense, lazy } from 'react'
-import ReactDOM from 'react-dom/client'
+import { Suspense, lazy } from 'react';
+import ReactDOM from 'react-dom/client';
 import './index.less';
 
 const userAgent = window.navigator.userAgent;
