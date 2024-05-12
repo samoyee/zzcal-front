@@ -1,5 +1,6 @@
 import { auth } from "@/auth";
-import FormulaLayout from "@/pc/layout";
+import FormulaLayout from "@/pc/components/formula-layout";
+import WelcomeLayout from "@/pc/components/welcome-layout";
 import Page404 from "@/pc/pages/404";
 import Formula from "@/pc/pages/formula";
 import Login from "@/pc/pages/login";
@@ -9,32 +10,6 @@ import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
     {
-        path: '/register',
-        action: async () => {
-            return redirect('/formula/zziol');
-        },
-        loader: () => {
-            if (auth.getToken()) {
-                return redirect('/formula/zziol')
-            }
-            return null
-        },
-        Component: Register
-    },
-    {
-        path: '/login',
-        action: async () => {
-            return redirect('/formula/zziol');
-        },
-        loader: () => {
-            if (auth.getToken()) {
-                return redirect('/formula/zziol')
-            }
-            return null
-        },
-        Component: Login
-    },
-    {
         path: "/logout",
         action: async () => {
             await auth.signout();
@@ -42,8 +17,30 @@ const router = createBrowserRouter([
         }
     },
     {
+        id: 'welcome',
+        Component: WelcomeLayout,
+        action: async () => {
+            return redirect('/formula/zziol');
+        },
+        loader: () => {
+            if (auth.getToken()) {
+                return redirect('/formula/zziol')
+            }
+            return null
+        },
+        children: [
+            {
+                path: '/login',
+                Component: Login,
+            },
+            {
+                path: '/register',
+                Component: Register,
+            }
+        ]
+    },
+    {
         id: "root",
-        path: '/',
         Component: FormulaLayout,
         loader: async () => {
             if (!auth.getToken()) {

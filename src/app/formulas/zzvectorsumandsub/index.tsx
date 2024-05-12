@@ -1,16 +1,16 @@
-import { Form, List } from 'antd-mobile';
-import React from 'react';
-import NumberInput from '@/app/components/number-input';
-import FormulaForm from '@/app/components/formula-form';
-import { useGetLocale } from '@/locale';
-import show from '@/app/components/result';
-import { post } from '@/service';
 import DataChart from '@/app/components/chart';
+import Form from '@/app/components/formula-form';
+import NumberInput from '@/app/components/number-input';
+import show from '@/app/components/result';
 import Stats from '@/app/components/statistic';
+import { useGetLocale } from '@/locale';
+import { post } from '@/service';
+import { List } from 'antd-mobile';
+import React from 'react';
 
 const Formula: React.FC = () => {
     const getLocale = useGetLocale('zzvectorsumandsub');
-    return <FormulaForm
+    return <Form
         title={getLocale('title')}
         description={getLocale('description')}
         request={(data) => post({
@@ -49,10 +49,11 @@ const Formula: React.FC = () => {
             )
         })}
     >
-        <Form.Item label="A" required>
+        <Form.Item label="A">
             <Form.Item
                 noStyle
                 name="sph1"
+                label="Sph"
                 rules={[{ required: true }]}
             >
                 <NumberInput placeholder='Sph' suffix="D" />
@@ -60,6 +61,7 @@ const Formula: React.FC = () => {
             <Form.Item
                 noStyle
                 name="cyl1"
+                label="Cyl"
                 rules={[{ required: true }]}
             >
                 <NumberInput placeholder='Cyl' suffix="D" />
@@ -67,15 +69,17 @@ const Formula: React.FC = () => {
             <Form.Item
                 noStyle
                 name="axis1"
+                label="Axis"
                 rules={[{ required: true }]}
             >
                 <NumberInput placeholder='Axis' />
             </Form.Item>
         </Form.Item>
-        <Form.Item label="B" required>
+        <Form.Item label="B">
             <Form.Item
                 noStyle
                 name="sph2"
+                label="Sph"
                 rules={[{ required: true }]}
             >
                 <NumberInput placeholder='Sph' suffix="D" />
@@ -83,6 +87,7 @@ const Formula: React.FC = () => {
             <Form.Item
                 noStyle
                 name="cyl2"
+                label="Cyl"
                 rules={[{ required: true }]}
             >
                 <NumberInput placeholder='Cyl' suffix="D" />
@@ -90,12 +95,13 @@ const Formula: React.FC = () => {
             <Form.Item
                 noStyle
                 name="axis2"
+                label="Axis"
                 rules={[{ required: true }]}
             >
                 <NumberInput placeholder='Axis' />
             </Form.Item>
         </Form.Item>
-    </FormulaForm>
+    </Form>
 }
 
 export default Formula;

@@ -1,16 +1,16 @@
-import { useGetLocale } from '@/locale';
-import { post } from '@/service';
 import DataChart from '@/app/components/chart';
-import FormulaForm from '@/app/components/formula-form';
+import Form from '@/app/components/formula-form';
 import NumberInput from '@/app/components/number-input';
 import show from '@/app/components/result';
-import { Form, List, Radio } from 'antd-mobile';
-import React from 'react';
 import Stats from '@/app/components/statistic';
+import { useGetLocale } from '@/locale';
+import { post } from '@/service';
+import { List, Selector } from 'antd-mobile';
+import React from 'react';
 
 const Formula: React.FC = () => {
     const getLocale = useGetLocale('zzar');
-    return <FormulaForm
+    return <Form
         title={getLocale('title')}
         description={getLocale('description')}
         initialValues={{
@@ -46,17 +46,14 @@ const Formula: React.FC = () => {
                 )
             })}
     >
-        <Form.Item name="mode" extra={getLocale('selector')}>
-            <Radio.Group>
-                <Radio value="available">{getLocale('yes')}</Radio>
-                <Radio value="not">{getLocale("no")}</Radio>
-            </Radio.Group>
+        <Form.Item name="mode" label={getLocale('selector')}>
+            <Radio />
         </Form.Item>
-        <Form.Item label="Mani" required>
+        <Form.Item label="Mani">
             <Form.Item
                 noStyle
                 name="maniSph"
-                label="Sph"
+                label="Mani Sph"
                 rules={[{ required: true }]}
             >
 
@@ -65,7 +62,7 @@ const Formula: React.FC = () => {
             <Form.Item
                 noStyle
                 name="maniCyl"
-                label="Cyl"
+                label="Mani Cyl"
                 rules={[{ required: true }]}
             >
                 <NumberInput placeholder='Cyl' suffix="D" />
@@ -73,7 +70,7 @@ const Formula: React.FC = () => {
             <Form.Item
                 noStyle
                 name="maniCylAxis"
-                label="Axis"
+                label="Mani Axis"
                 rules={[{ required: true }]}
             >
                 <NumberInput placeholder='Axis' />
@@ -114,10 +111,11 @@ const Formula: React.FC = () => {
             {({ getFieldValue }) =>
                 getFieldValue('mode') === 'available' &&
                 <>
-                    <Form.Item label="Corn-P" required>
+                    <Form.Item label="Corn-P">
                         <Form.Item
                             noStyle
                             name="cornPC"
+                            label="Corn-P Cyl"
                             rules={[{ required: true }]}
                         >
                             <NumberInput placeholder='Cyl' suffix="D" />
@@ -125,6 +123,7 @@ const Formula: React.FC = () => {
                         <Form.Item
                             noStyle
                             name="cornPAx"
+                            label="Corn-P Axis"
                             rules={[{ required: true }]}
                         >
                             <NumberInput placeholder='Axis' />
@@ -147,6 +146,7 @@ const Formula: React.FC = () => {
             <Form.Item
                 noStyle
                 name="tmra"
+                label="TMR Axis"
                 rules={[{ required: true }]}
             >
                 <NumberInput placeholder='Axis' />
@@ -159,7 +159,30 @@ const Formula: React.FC = () => {
         >
             <NumberInput suffix="%" />
         </Form.Item>
-    </FormulaForm>
+    </Form>
 }
 
 export default Formula;
+
+const Radio: React.FC<{ value?: string, onChange?: (value?: string) => void }> = ({ value, onChange }) => {
+    const getLocale = useGetLocale('zzar');
+    return <Selector
+        options={[
+            {
+                label: getLocale('yes'),
+                value: 'available'
+            },
+            {
+                label: getLocale('no'),
+                value: 'not'
+            }
+        ]}
+        columns={2}
+        value={value ? [value] : []}
+        onChange={(value) => {
+            if (value.length) {
+                onChange?.(value[0]);
+            }
+        }}
+    />
+}

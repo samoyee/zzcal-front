@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.less';
+import './style.less';
 
 interface StatsProps {
     title?: string;

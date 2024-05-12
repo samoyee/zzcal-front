@@ -1,20 +1,20 @@
 import { useGetLocale } from '@/locale';
-import { Button, Form, SafeArea, Toast } from 'antd-mobile';
-import React, { type PropsWithChildren } from 'react';
-import './style.less';
 import { LeftOutlined } from '@ant-design/icons';
+import { Form as AntdForm, Button, SafeArea, Toast, type FormItemProps } from 'antd-mobile';
+import React, { type PropsWithChildren } from 'react';
 import { useNavigate } from 'react-router';
+import './style.less';
 
-interface FormulaFormProps {
+interface FormProps {
     initialValues?: Record<string, number | any>;
     title: string;
     description: string | string[];
     request: (data: any) => Promise<void>;
 }
 
-const FormulaForm: React.FC<FormulaFormProps & PropsWithChildren> = (props) => {
+const Form: React.FC<FormProps & PropsWithChildren> & { Item: typeof FormItem; Array: typeof AntdForm.Array } = (props) => {
     const { children, initialValues, title, description } = props;
-    const [form] = Form.useForm();
+    const [form] = AntdForm.useForm();
     const navigate = useNavigate();
     const getLocale = useGetLocale('formula-form');
 
@@ -44,7 +44,7 @@ const FormulaForm: React.FC<FormulaFormProps & PropsWithChildren> = (props) => {
                         <p className='formula-form-description'>{description}</p>
                 )
             }
-            <Form
+            <AntdForm
                 form={form}
                 className='formula-form'
                 initialValues={initialValues}
@@ -52,7 +52,7 @@ const FormulaForm: React.FC<FormulaFormProps & PropsWithChildren> = (props) => {
                     required: getLocale('required')
                 }}>
                 {children}
-            </Form>
+            </AntdForm>
         </div>
         <div className='formula-form-footer'>
             <Button block color='primary' onClick={onSubmit}>
@@ -63,5 +63,11 @@ const FormulaForm: React.FC<FormulaFormProps & PropsWithChildren> = (props) => {
     </div>
 }
 
-export default FormulaForm;
+const FormItem: React.FC<Omit<FormItemProps, 'required'>> = (props) => {
+    return <AntdForm.Item {...props} required={false} />
+}
 
+Form.Item = FormItem;
+Form.Array = AntdForm.Array
+
+export default Form;

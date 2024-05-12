@@ -1,15 +1,15 @@
-import { useGetLocale } from '@/locale';
-import { post } from '@/service';
-import FormulaForm from '@/app/components/formula-form';
+import Form from '@/app/components/formula-form';
 import NumberInput from '@/app/components/number-input';
 import show from '@/app/components/result';
-import { Form, List } from 'antd-mobile';
-import React from 'react';
 import Stats from '@/app/components/statistic';
+import { useGetLocale } from '@/locale';
+import { post } from '@/service';
+import { List } from 'antd-mobile';
+import React from 'react';
 
 const Formula: React.FC = () => {
     const getLocale = useGetLocale('zzicl');
-    return <FormulaForm
+    return <Form
         title={getLocale('title')}
         description={getLocale('description')}
         initialValues={{
@@ -49,10 +49,11 @@ const Formula: React.FC = () => {
                 </List>
             )
         })}>
-        <Form.Item label="Mani" required>
+        <Form.Item label="Mani">
             <Form.Item
                 noStyle
                 name="maniS"
+                label="Mani Sph"
                 rules={[{ required: true }]}
             >
                 <NumberInput placeholder='Sph' suffix="D" />
@@ -60,6 +61,7 @@ const Formula: React.FC = () => {
             <Form.Item
                 noStyle
                 name="maniC"
+                label="Mani Cyl"
                 rules={[{ required: true }]}
             >
                 <NumberInput placeholder='Cyl' suffix="D" />
@@ -67,6 +69,7 @@ const Formula: React.FC = () => {
             <Form.Item
                 noStyle
                 name="maniAx"
+                label="Mani Axis"
                 rules={[{ required: true }]}
             >
                 <NumberInput placeholder='Axis' />
@@ -131,7 +134,7 @@ const Formula: React.FC = () => {
         >
             <NumberInput suffix="mm" min={0} max={180} />
         </Form.Item>
-        <Form.Item label="Plan ICL" required>
+        <Form.Item label="Plan ICL">
             <Form.Item
                 noStyle
                 name="planIclS"
@@ -163,7 +166,7 @@ const Formula: React.FC = () => {
         >
             <NumberInput />
         </Form.Item>
-    </FormulaForm>
+    </Form>
 }
 
 export default Formula;

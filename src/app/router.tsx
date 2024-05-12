@@ -1,10 +1,10 @@
-import { auth } from "@/auth";
 import FormulaLayout from "@/app/layout";
 import Page404 from "@/app/pages/404";
 import Formula from "@/app/pages/formula";
 import Login from "@/app/pages/login";
 import Register from "@/app/pages/register";
 import Welcome from "@/app/pages/welcome";
+import { auth } from "@/auth";
 import { redirect } from "react-router";
 import { createBrowserRouter } from "react-router-dom";
 

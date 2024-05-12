@@ -37,7 +37,7 @@ const DataChart: React.FC<DataChartProps> = (props) => {
             onChange={(e) => { setChartType(e.target.value) }}
         />
         <Polar
-            data={data} 
+            data={data}
             maxAngle={chartType === 'single' ? 180 : 360}
         />
     </>

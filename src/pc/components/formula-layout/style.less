@@ -1,0 +1,40 @@
+.formula-layout {
+    &-top {
+        height: 50px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    &-main {
+        height: calc(100vh - 50px);
+        display: flex;
+    }
+
+    &-nav {
+        width: 250px;
+        overflow: hidden;
+        height: 100%;
+        flex-shrink: 0;
+    }
+
+    &-content {
+        flex-grow: 1;
+    }
+
+    &-top {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0 12px;
+
+        .locale {
+            margin: 0 8px;
+        }
+    }
+
+    &-logout {
+        width: 70px;
+        text-align: center;
+        cursor: pointer;
+    }
+
+}

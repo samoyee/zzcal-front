@@ -1,69 +1,67 @@
-html {
-    .register-page {
-        background-color: #5c8cfe;
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+.register-page {
+    background-color: #5c8cfe;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-card {
+    display: block;
+    width: 380px;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 48px 60px 32px 60px;
+
+    .register-card-item {
+        position: relative;
+        margin-bottom: 48px;
     }
 
-    .register-card {
-        display: block;
-        width: 380px;
-        border-radius: 8px;
-        background-color: #fff;
-        padding: 48px 60px 32px 60px;
+    .register-input {
+        padding: 8px 12px;
+        color: #999;
 
-        .register-card-item {
-            position: relative;
-            margin-bottom: 48px;
-        }
-
-        .register-input {
-            padding: 8px 12px;
-            color: #999;
-
-            &.ant-input-affix-wrapper-focused {
-                .anticon {
-                    color: #555;
-                }
-
-                .ant-input {
-                    color: #555;
-                }
+        &.ant-input-affix-wrapper-focused {
+            .anticon {
+                color: #555;
             }
 
+            .ant-input {
+                color: #555;
+            }
         }
 
-        .register-btn {
-            color: #fff;
-            border: none;
-            height: 48px;
-        }
     }
 
-    .register-forget {
-        margin-top: 12px;
-        text-align: right;
-        color: #d1d3d4;
-        cursor: pointer;
-        font-size: 14px;
-
-        &>a:hover {
-            color: #b7b9ba;
-        }
+    .register-btn {
+        color: #fff;
+        border: none;
+        height: 48px;
     }
+}
 
-    .register-create-count {
-        text-align: center;
-        color: #5c8cfe;
-        margin-top: 24px;
-        font-size: 16px;
-        cursor: pointer;
+.register-forget {
+    margin-top: 12px;
+    text-align: right;
+    color: #d1d3d4;
+    cursor: pointer;
+    font-size: 14px;
 
-        &:hover {
-            color: #4979ec;
-        }
+    &>a:hover {
+        color: #b7b9ba;
+    }
+}
+
+.register-create-count {
+    text-align: center;
+    color: #5c8cfe;
+    margin-top: 24px;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+        color: #4979ec;
     }
 }

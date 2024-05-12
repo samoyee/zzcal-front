@@ -1,15 +1,15 @@
-import FormulaForm from '@/app/components/formula-form';
+import Form from '@/app/components/formula-form';
 import NumberInput from '@/app/components/number-input';
+import show from '@/app/components/result';
 import Stats from '@/app/components/statistic';
 import { useGetLocale } from '@/locale';
-import show from '@/app/components/result';
 import { post } from '@/service';
-import { Form, List } from 'antd-mobile';
+import { List } from 'antd-mobile';
 import React from 'react';
 
 const Formula: React.FC = () => {
     const getLocale = useGetLocale('zzlsa')
-    return <FormulaForm
+    return <Form
         title={getLocale('title')}
         description={getLocale('description')}
         initialValues={{
@@ -32,25 +32,25 @@ const Formula: React.FC = () => {
             )
         })}
     >
-        <Form.Item name="opicZone" label="Opic Zone">
+        <Form.Item name="opicZone" label="Opic Zone" rules={[{ required: true }]}>
             <NumberInput suffix="mm" disabled />
         </Form.Item>
-        <Form.Item name="kf" label="Kf">
+        <Form.Item name="kf" label="Kf" rules={[{ required: true }]}>
             <NumberInput suffix="D" />
         </Form.Item>
-        <Form.Item name="e" label="e">
+        <Form.Item name="e" label="e" rules={[{ required: true }]}>
             <NumberInput />
         </Form.Item>
-        <Form.Item name="psa" label="PSA">
+        <Form.Item name="psa" label="PSA" rules={[{ required: true }]}>
             <NumberInput suffix="μm" />
         </Form.Item>
-        <Form.Item name="correctDs" label="Correct DS">
+        <Form.Item name="correctDs" label="Correct DS" rules={[{ required: true }]}>
             <NumberInput suffix="D" />
         </Form.Item>
-        <Form.Item name="targetLsa" label="Target LSA">
+        <Form.Item name="targetLsa" label="Target LSA" rules={[{ required: true }]}>
             <NumberInput suffix="D" />
         </Form.Item>
-    </FormulaForm>
+    </Form>
 }
 
 export default Formula;

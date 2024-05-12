@@ -1,3 +1,5 @@
+import { getLocale } from "./locale";
+
 interface IService {
     url: string;
     method: 'POST' | 'GET';
@@ -30,9 +32,14 @@ async function service({
             'content-type': contentType || 'application/json',
         }
     })
+    if (response.status >= 500) {
+        throw new Error(getLocale('service')('serverError'));
+    } else if (response.status >= 400) {
+        throw new Error(getLocale('service')('requestError'));
+    }
     const json = await response.json();
     if (json.type === 0) return json.data;
-    throw new Error(json.msg);
+    throw json.msg;
 }
 
 export function post(args: Omit<IService, 'method'>) {

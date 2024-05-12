@@ -1,0 +1,38 @@
+{
+    "accountRequired": "Please input account",
+    "nameRequired": "Please input name",
+    "emailRequired": "Please input email",
+    "emailPatternError": "Email format is not correct",
+    "countryRequired": "Please input country",
+    "institutionRequired": "Please input institution",
+    "phonePatternError": "Phone format is not correct",
+    "passwordRequired": "Please input password",
+    "passwordLenError": "Password length between 6 and 20 digits",
+    "passwordPatternError": "Passwords must contain numbers, letters, and special characters",
+    "confirmPasswordError": "Twice the password input is inconsistent",
+    "okBtn": "OK",
+    "registerBtn": "Register",
+    "backBtn": "Back to Login",
+    "registerFail": "Registration failed, please check your input",
+    "accountLabel": "Account",
+    "nameLabel": "Name",
+    "lastNameLabel": "Last name",
+    "firstNameLabel": "First name",
+    "emailLabel": "Email",
+    "countryLabel": "Country",
+    "phoneLabel": "Phone",
+    "phonePlaceholder": "Please input phone",
+    "institutionLabel": "Institution",
+    "passwordLabel": "Password",
+    "confirmPasswordLabel": "Confirm password",
+    "confirmPasswordPlaceholder": "Please input password again",
+    "passwordRuleTitle": "Password input specifications",
+    "passwordRuleContent": [
+        "Password length between 6 and 20 digits",
+        "Passwords must contain numbers, letters, and special characters"
+    ],
+    "confirmPasswordRuleTitle": "Confirm password input specifications",
+    "confirmPasswordRuleContent": [
+        "The password entered must match the password entered for the first time"
+    ]
+}

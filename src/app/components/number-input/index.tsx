@@ -15,7 +15,7 @@ interface NumberInputProps extends Omit<InputProps, 'controls' | 'value' | 'defa
 const NumberInput: React.FC<NumberInputProps> = (props) => {
     const { extra, value, defaultValue, onChange, suffix, precision, ...restProps } = props;
 
-    return <div className='formula-number'>
+    return <div className='number-input-wrapper'>
         <Input
             {...restProps}
             value={typeof value === 'number' ? `${typeof precision === 'number' ? value.toFixed(precision) : value}` : ''}
@@ -27,9 +27,10 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
                     onChange?.(null)
                 }
             }}
-            className={classNames('formula-number-input', props.className)}
+            className={classNames('number-input', props.className)}
+            autoComplete='off'
         />
-        {suffix && <div className='formula-number-suffix'>{suffix}</div>}
+        {suffix && <div className='number-input-suffix'>{suffix}</div>}
     </div>
 }
 

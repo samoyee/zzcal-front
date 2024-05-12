@@ -1,0 +1,9 @@
+{
+    "usernameRequired": "Please input your account",
+    "passwordRequired": "Please input your password",
+    "okBtn": "OK",
+    "forgetBtn": "Forget?",
+    "loginBtn": "Log In",
+    "createBtn": "Add?",
+    "loginFail": "Account or password was wrong"
+}

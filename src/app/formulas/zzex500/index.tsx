@@ -1,15 +1,15 @@
-import { useGetLocale } from '@/locale';
-import { post } from '@/service';
-import FormulaForm from '@/app/components/formula-form';
+import Form from '@/app/components/formula-form';
 import NumberInput from '@/app/components/number-input';
 import show from '@/app/components/result';
-import { Form, List } from 'antd-mobile';
-import React from 'react';
 import Stats from '@/app/components/statistic';
+import { useGetLocale } from '@/locale';
+import { post } from '@/service';
+import { List } from 'antd-mobile';
+import React from 'react';
 
 const Formula: React.FC = () => {
   const getLocale = useGetLocale('zzex500');
-  return <FormulaForm
+  return <Form
     title={getLocale('title')}
     description={getLocale('description')}
     request={(data) => post({
@@ -94,7 +94,7 @@ const Formula: React.FC = () => {
     >
       <NumberInput />
     </Form.Item>
-  </FormulaForm>
+  </Form>
 }
 
 export default Formula;

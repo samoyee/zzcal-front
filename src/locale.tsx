@@ -4,7 +4,9 @@ import { PropsWithChildren } from 'react';
 
 type Locale = 'zhCN' | 'enUS'
 
-const localeAtom = atomWithStorage<Locale>("locale", 'zhCN');
+const defaultLocale = localStorage.getItem('locale');
+
+const localeAtom = atomWithStorage<Locale>("locale", JSON.parse(defaultLocale || 'zhCN'));
 
 export const useSetLocale = () => {
     const setLocale = useSetAtom(localeAtom);
@@ -29,4 +31,14 @@ const localeStore = createStore();
 
 export const LocaleProvider: React.FC<PropsWithChildren> = (props) => {
     return <Provider store={localeStore}>{props.children}</Provider>
+}
+
+export function getLocale(module: string) {
+    const locale = localeStore.get(localeAtom);
+    const message = window.locales[locale];
+    const mod = message[module];
+    return (id: string) => {
+        if (mod) return mod[id];
+        return id;
+    }
 }

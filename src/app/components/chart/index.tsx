@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useGetLocale } from "@/locale";
+import { Selector } from "antd-mobile";
+import React, { useMemo, useState } from "react";
 import Polar from "./Polar";
-import { Radio } from "antd-mobile";
 import './style.less';
 
 interface DataChartProps {
@@ -8,17 +9,42 @@ interface DataChartProps {
 }
 
 const DataChart: React.FC<DataChartProps> = (props) => {
-    const { data } = props;
     const [chartType, setChartType] = useState<"single" | 'double'>("single");
+    const getLocale = useGetLocale("chart");
+
+    const data: Array<[number, number, string]> = useMemo(() => {
+        return props.data.map((item) => {
+            let [cyl, axis, name] = item;
+            axis = cyl > 0 ? (axis <= 90 ? axis + 90 : axis - 90) : axis;
+            return [Math.abs(cyl), (chartType == "single" ? 1 : 2) * axis, name];
+        });
+    }, [chartType, props.data])
+
     return data && <>
-        <Radio.Group
-            value={chartType}
-            onChange={(e) => { setChartType(e as "single" | 'double') }}
-        >
-            <Radio value="single">单倍</Radio>
-            <Radio value="double">双倍</Radio>
-        </Radio.Group>
-        <Polar type={chartType} data={data} />
+        <Selector
+            className="polar-selector"
+            options={[
+                {
+                    label: getLocale('single'),
+                    value: "single",
+                },
+                {
+                    label: getLocale('double'),
+                    value: "double",
+                },
+            ]}
+            value={[chartType]}
+            columns={2}
+            onChange={v => {
+                if (v.length) {
+                    setChartType(v[0])
+                }
+            }}
+        />
+        <Polar
+            data={data}
+            maxAngle={chartType === 'single' ? 180 : 360}
+        />
     </>
 }
 

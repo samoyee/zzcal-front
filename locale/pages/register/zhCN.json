@@ -1,0 +1,38 @@
+{
+    "accountRequired": "请输入账号",
+    "nameRequired": "请输入姓名",
+    "emailRequired": "请输入邮箱",
+    "emailPatternError": "邮箱格式错误",
+    "countryRequired": "请选择国家",
+    "institutionRequired": "请输入机构、单位",
+    "phonePatternError": "电话格式错误",
+    "passwordRequired": "请输入密码",
+    "passwordLenError": "密码长度必须在6～20位之间",
+    "passwordPatternError": "密码必须至少包含一个数字，一个字母和一个特殊字符",
+    "confirmPasswordError": "两次输入密码不一致",
+    "okBtn": "知道了",
+    "registerBtn": "注册",
+    "backBtn": "返回登录",
+    "registerFail": "注册失败，请检查您的输入",
+    "accountLabel": "账号",
+    "nameLabel": "姓名",
+    "lastNameLabel": "姓",
+    "firstNameLabel": "名",
+    "emailLabel": "邮箱",
+    "countryLabel": "国家",
+    "phoneLabel": "电话",
+    "phonePlaceholder": "请输入电话",
+    "institutionLabel": "机构",
+    "passwordLabel": "密码",
+    "confirmPasswordLabel": "确认密码",
+    "confirmPasswordPlaceholder": "请再一次输入密码",
+    "passwordRuleTitle": "密码输入规范",
+    "passwordRuleContent": [
+        "密码长度在6-20位之间",
+        "密码必须包含数字、字母、特殊字符"
+    ],
+    "confirmPasswordRuleTitle": "确认密码输入规范",
+    "confirmPasswordRuleContent": [
+        "输入的密码必须和第一次输入的密码保持一致"
+    ]
+}

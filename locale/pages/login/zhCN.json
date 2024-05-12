@@ -1,0 +1,9 @@
+{
+    "usernameRequired": "请输入账号",
+    "passwordRequired": "请输入密码",
+    "okBtn": "知道了",
+    "forgetBtn": "忘记密码？",
+    "loginBtn": "登录",
+    "createBtn": "新建账号？",
+    "loginFail": "账号或密码错误"
+}

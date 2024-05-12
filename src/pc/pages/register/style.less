@@ -1,69 +1,77 @@
-html {
-    .register-page {
-        background-color: #5c8cfe;
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+.register {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
 
-    .register-card {
-        display: block;
-        width: 380px;
-        border-radius: 8px;
-        background-color: #fff;
-        padding: 48px 60px 32px 60px;
-
-        .register-card-item {
-            position: relative;
-            margin-bottom: 48px;
-        }
-
-        .register-input {
-            padding: 8px 12px;
-            color: #999;
-
-            &.ant-input-affix-wrapper-focused {
-                .anticon {
-                    color: #555;
-                }
-
-                .ant-input {
-                    color: #555;
-                }
-            }
-
-        }
-
-        .register-btn {
-            color: #fff;
-            border: none;
-            height: 48px;
-        }
-    }
-
-    .register-forget {
-        margin-top: 12px;
-        text-align: right;
-        color: #d1d3d4;
-        cursor: pointer;
-        font-size: 14px;
-
-        &>a:hover {
-            color: #b7b9ba;
-        }
-    }
-
-    .register-create-count {
-        text-align: center;
-        color: #5c8cfe;
-        margin-top: 24px;
+    .ant-form-item-label>label {
         font-size: 16px;
-        cursor: pointer;
+        height: 40px;
+        width: 150px;
+        justify-content: flex-end;
+    }
 
-        &:hover {
-            color: #4979ec;
+    &-card {
+        width: 400px;
+    }
+
+    &-select {
+        height: 40px;
+    }
+
+    &-select.ant-select>.ant-select-selector,
+    &-input {
+        background: #fafafa;
+        border-color: transparent;
+        font-size: 16px;
+        border-radius: 4px;
+        height: 40px;
+    }
+
+    &-group &-input {
+        display: inline-block;
+        // width: calc(50% -12px);
+        width: calc(50% - 12px);
+    }
+
+    &-group &-input+&-input {
+        margin-left: 24px;
+    }
+
+    &-btn {
+        font-size: 16px;
+        height: auto;
+        padding: 8px 0;
+        margin-left: 150px;
+        width: calc(100% - 150px);
+    }
+
+    &-back {
+        text-align: right;
+        margin-top: 24px;
+
+        a {
+            color: #1677ff;
+            cursor: pointer;
+        }
+    }
+}
+
+.help-label {
+
+    &-icon {
+        margin-left: 8px;
+    }
+
+    &-overlay {
+        ul {
+            margin: 0;
+            padding-left: 20px;
+
+            li {
+                line-height: 22px;
+            }
         }
     }
 }

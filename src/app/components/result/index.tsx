@@ -1,7 +1,8 @@
+import Provider from '@/app/components/provider';
 import { useGetLocale } from '@/locale';
 import { Button, Popup, SafeArea } from 'antd-mobile';
 import React, { PropsWithChildren, useEffect, useState } from 'react';
-import ReactDOM from 'react-dom/client'
+import ReactDOM from 'react-dom/client';
 import './style.less';
 
 interface ResultProps {
@@ -33,7 +34,7 @@ const Result: React.FC<ResultProps & PropsWithChildren> = (props) => {
         </div>
         <div className='result-footer'>
             {props.attention && <span style={{ color: 'red', marginRight: 24 }}>{props.attention}</span>}
-            <Button block color='primary' onClick={onClose}>知道了</Button>
+            <Button block color='primary' onClick={onClose}>{getLocale('ok')}</Button>
             <SafeArea position="bottom" />
         </div>
     </Popup>
@@ -57,14 +58,16 @@ const show = (data: React.ReactNode, options?: ShowOption) => {
 
     function render(open: boolean) {
         modal.render(
-            <Result
-                open={open}
-                getContainer={() => wrapper}
-                onClose={close}
-                attention={options?.attention}
-            >
-                {data}
-            </Result>
+            <Provider>
+                <Result
+                    open={open}
+                    getContainer={() => wrapper}
+                    onClose={close}
+                    attention={options?.attention}
+                >
+                    {data}
+                </Result>
+            </Provider>
         )
     }
 

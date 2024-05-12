@@ -1,16 +1,17 @@
-import FormulaForm from '@/app/components/formula-form';
+import Form from '@/app/components/formula-form';
 import NumberInput from '@/app/components/number-input';
+import show from '@/app/components/result';
 import Stats from '@/app/components/statistic';
 import { useGetLocale } from '@/locale';
-import show from '@/app/components/result';
 import { post } from '@/service';
 import { PlusCircleOutlined } from '@ant-design/icons';
-import { Form, List } from 'antd-mobile';
+import { Button, List } from 'antd-mobile';
 import React from 'react';
+import './style.less';
 
 const Formula: React.FC = () => {
     const getLocale = useGetLocale('zzmeansdvector');
-    return <FormulaForm
+    return <Form
         title={getLocale('title')}
         description={getLocale('description')}
         initialValues={{
@@ -43,16 +44,16 @@ const Formula: React.FC = () => {
         <Form.Array name="zzMeanInfos"
             onAdd={operation => operation.add({ sph: null, cyl: null, axis: null })}
             renderAdd={() => (
-                <span>
-                    <PlusCircleOutlined /> 添加
-                </span>
+                <Button block className='mean-add'>
+                    <PlusCircleOutlined /> {getLocale('add')}
+                </Button>
             )}
             renderHeader={({ index }, { remove }) => (
-                <>
-                    <a onClick={() => remove(index)} style={{ float: 'right' }}>
-                        删除
+                <div className='mean-header'>
+                    <a onClick={() => remove(index)}>
+                        {getLocale('remove')}
                     </a>
-                </>
+                </div>
             )}
         >
             {(fields) => {
@@ -85,7 +86,7 @@ const Formula: React.FC = () => {
                     </Form.Item>)
             }}
         </Form.Array>
-    </FormulaForm>
+    </Form>
 }
 
 export default Formula;

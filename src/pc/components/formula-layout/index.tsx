@@ -9,19 +9,21 @@ import './style.less';
 const FormulaLayout: React.FC = () => {
     const { user } = useRouteLoaderData('root') as { user: IUser };
     const logout = useSubmit();
-    const getLocale = useGetLocale('layout');
+    const getLocale = useGetLocale('formula-layout');
 
     return <>
-        <div className='layout-top-wrapper'>
+        <div className='formula-layout-top'>
             <div>{user?.nickname}</div>
             <Locale />
-            <a onClick={() => logout(null, { action: '/logout', method: 'post' })}>{getLocale('logout')}</a>
+            <a className='formula-layout-logout' onClick={() => logout(null, { action: '/logout', method: 'post' })}>{getLocale('logout')}</a>
         </div>
-        <div className='layout-nav-wrapper'>
-            <Nav />
-        </div>
-        <div className='layout-page-wrapper'>
-            <Outlet />
+        <div className='formula-layout-main'>
+            <div className='formula-layout-nav'>
+                <Nav />
+            </div>
+            <div className='formula-layout-content'>
+                <Outlet />
+            </div>
         </div>
     </>
 }

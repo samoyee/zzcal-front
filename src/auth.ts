@@ -1,3 +1,4 @@
+import { getLocale } from "./locale";
 import { post } from "./service";
 
 interface ILoginUser {
@@ -32,28 +33,37 @@ interface AuthProvider {
     getUser(): Promise<void>;
 }
 
-
 export const auth: AuthProvider = {
     user: null,
     async signin(user: ILoginUser) {
-        const data = await post({
-            url: '/userInfo/login',
-            data: {
-                ...user
-            },
-        }) as IUser;
-        auth.user = data;
-        localStorage.setItem('token', `${data.id}`);
+        try {
+            const data = await post({
+                url: '/userInfo/login',
+                data: {
+                    ...user
+                },
+            }) as IUser;
+            auth.user = data;
+            localStorage.setItem('token', `${data.id}`);
+        } catch (err) {
+            if (err instanceof Error) throw err;
+            throw new Error(getLocale('login')('loginFail'))
+        }
     },
     async register(user: IRegisterUser) {
-        const data = await post({
-            url: '/userInfo/add',
-            data: {
-                ...user
-            },
-        }) as IUser;
-        auth.user = data;
-        localStorage.setItem('token', `${data.id}`);
+        try {
+            const data = await post({
+                url: '/userInfo/add',
+                data: {
+                    ...user
+                },
+            }) as IUser;
+            auth.user = data;
+            localStorage.setItem('token', `${data.id}`);
+        } catch (err) {
+            if (err instanceof Error) throw err;
+            throw new Error(getLocale('register')('registerFail'))
+        }
     },
     async signout() {
         await new Promise((r) => setTimeout(r, 500));

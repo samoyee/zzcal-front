@@ -6,7 +6,7 @@ const Page: React.FC = () => {
   const params = useParams();
   const formula = params.formula;
   const [Formula, setFormula] = useState<React.ReactNode>();
-  
+
   useEffect(() => {
     import(`../../formulas/${formula}`)
       .then(module => {
@@ -18,7 +18,7 @@ const Page: React.FC = () => {
       });
 
   }, [formula])
-  
+
   return Formula
 }
 

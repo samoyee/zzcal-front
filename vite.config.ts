@@ -3,13 +3,14 @@ import path from 'path';
 import { defineConfig } from 'vite';
 import dynamicImport from 'vite-plugin-dynamic-import';
 import locale from './plugins/locale';
+import countries from './plugins/countries';
 
 export default defineConfig({
   plugins: [
     react(),
     dynamicImport(),
     locale(),
-    
+    countries()
   ],
   css: {
     preprocessorOptions: {

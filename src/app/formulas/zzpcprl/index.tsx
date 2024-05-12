@@ -1,15 +1,15 @@
-import { useGetLocale } from '@/locale';
-import show from '@/app/components/result';
-import { post } from '@/service';
-import FormulaForm from '@/app/components/formula-form';
+import Form from '@/app/components/formula-form';
 import NumberInput from '@/app/components/number-input';
-import { Form, List } from 'antd-mobile';
-import React from 'react';
+import show from '@/app/components/result';
 import Stats from '@/app/components/statistic';
+import { useGetLocale } from '@/locale';
+import { post } from '@/service';
+import { List } from 'antd-mobile';
+import React from 'react';
 
 export const Formula: React.FC = () => {
     const getLocale = useGetLocale('zzpcprl');
-    return <FormulaForm
+    return <Form
         title={getLocale('title')}
         description={getLocale('description')}
         initialValues={{ ct: 500 }}
@@ -19,7 +19,7 @@ export const Formula: React.FC = () => {
         }).then((result: any) => {
             show(
                 <List>
-                    <List.Item extra={<Stats  value={result.pcPrl} />}>PC-PRL</List.Item>
+                    <List.Item extra={<Stats value={result.pcPrl} />}>PC-PRL</List.Item>
                 </List>
             );
         })}
@@ -28,16 +28,18 @@ export const Formula: React.FC = () => {
             <Form.Item
                 noStyle
                 name="maniS"
+                label="Mani Sph"
                 rules={[{ required: true }]}
             >
-                <NumberInput placeholder='sph' suffix="D" />
+                <NumberInput placeholder='Sph' suffix="D" />
             </Form.Item>
             <Form.Item
                 noStyle
                 name="maniC"
+                label="Mani Cyl"
                 rules={[{ required: true }]}
             >
-                <NumberInput placeholder='cyl' suffix="D" />
+                <NumberInput placeholder='Cyl' suffix="D" />
             </Form.Item>
         </Form.Item>
         <Form.Item
@@ -50,6 +52,7 @@ export const Formula: React.FC = () => {
         <Form.Item
             name="ct"
             label="CT"
+            rules={[ { required: true } ]}
         >
             <NumberInput suffix="μm" />
         </Form.Item>
@@ -60,7 +63,7 @@ export const Formula: React.FC = () => {
         >
             <NumberInput suffix="mm" />
         </Form.Item>
-    </FormulaForm>;
+    </Form>;
 };
 
 export default Formula;

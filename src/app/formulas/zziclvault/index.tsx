@@ -1,15 +1,15 @@
-import FormulaForm from '@/app/components/formula-form';
+import Form from '@/app/components/formula-form';
 import NumberInput from '@/app/components/number-input';
 import show from '@/app/components/result';
 import Stats from '@/app/components/statistic';
 import { useGetLocale } from '@/locale';
 import { post } from '@/service';
-import { Form, List, } from 'antd-mobile';
+import { List } from 'antd-mobile';
 import React from 'react';
 
 const Formula: React.FC = () => {
     const getLocale = useGetLocale('zziclvault')
-    return <FormulaForm
+    return <Form
         title={getLocale('title')}
         description={getLocale('description')}
         initialValues={{ lt: 4 }}
@@ -64,7 +64,7 @@ const Formula: React.FC = () => {
         >
             <NumberInput suffix="mm" min={0} max={180} />
         </Form.Item>
-    </FormulaForm>
+    </Form>
 }
 
 export default Formula;
