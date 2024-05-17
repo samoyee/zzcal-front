@@ -12,7 +12,7 @@ const FormulaLayout: React.FC = () => {
         </div>
         <div className='welcome-layout-copyright'>
             <a href='https://beian.miit.gov.cn/?spm=a21bo.2017.1997523009.42.5af911d9dARMWo#/Integrated/recordQuery' target='_blank'>浙ICP备 18028241号-3</a>
-            <img src="/images/police.png" />
+            <img src="https://mskmanager.oss-cn-hangzhou.aliyuncs.com/zzcal/police.png" />
             <a href='http://www.beian.gov.cn/portal/registerSystemInfo?spm=a21bo.2017.1997523009.45.5af911d9dARMWo&recordcode=33010302003623'>浙公网安备 33010302003623号</a>
         </div>
     </div>

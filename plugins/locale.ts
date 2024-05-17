@@ -6,7 +6,7 @@ function readFilesInDirectorySync(directory: string): string[] {
     const files = fs.readdirSync(directory);
     let result: string[] = [];
     files.forEach(file => {
-        let fullPath = path.join(directory, file);
+        const fullPath = path.join(directory, file);
         const stats = fs.statSync(fullPath);
         if (stats.isDirectory()) {
             result = result.concat(readFilesInDirectorySync(fullPath));
@@ -24,7 +24,7 @@ function locale(): Plugin {
     files.forEach(path => {
         const content = fs.readFileSync(path, 'utf-8');
         const json = JSON.parse(content);
-        const paths = path.split('/');
+        const paths = path.split(/\/|\\/);
         const module = paths[paths.length - 2];
         if (path.includes('zhCN')) {
             zhCN = { ...zhCN, [module]: json };

@@ -4,9 +4,7 @@ import { PropsWithChildren } from 'react';
 
 type Locale = 'zhCN' | 'enUS'
 
-const defaultLocale = localStorage.getItem('locale');
-
-const localeAtom = atomWithStorage<Locale>("locale", JSON.parse(defaultLocale || 'zhCN'));
+const localeAtom = atomWithStorage<Locale>("locale", 'zhCN', undefined, { getOnInit: true });
 
 export const useSetLocale = () => {
     const setLocale = useSetAtom(localeAtom);

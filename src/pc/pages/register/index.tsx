@@ -32,7 +32,7 @@ const Register: React.FC = () => {
             if (!formData.account) throw new Error(getLocale('accountRequired'));
             if (!formData.lastName || !formData.firstName) throw new Error(getLocale('nameRequired'));
             if (!formData.email) throw new Error(getLocale('emailRequired'));
-            if (!/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(formData.email)) throw new Error(getLocale('emailPatternError'))
+            if (!/^([a-zA-Z]|[0-9])(\w)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(formData.email)) throw new Error(getLocale('emailPatternError'))
             if (!formData.country) throw new Error(getLocale('countryRequired'));
             if (!formData.institution) throw new Error(getLocale('institutionRequired'));
             if (formData.phone && !/\d{8,}/.test(formData.phone)) throw new Error(getLocale('phonePatternError'));
@@ -43,13 +43,14 @@ const Register: React.FC = () => {
 
             await auth.register(formData)
             register(null);
-        } catch (err: any) {
-            modal.info({
-                centered: true,
-                type: 'info',
-                content: err.message,
-                okText: getLocale('okBtn')
-            })
+        } catch (err) {
+            if (err instanceof Error)
+                modal.info({
+                    centered: true,
+                    type: 'info',
+                    content: err.message,
+                    okText: getLocale('okBtn')
+                })
         }
     }
 
@@ -98,9 +99,9 @@ const Register: React.FC = () => {
                         console.log('xa', locale, getFieldValue('country'), country);
                         return <Form.Item name="phone" label={getLocale('phoneLabel')}>
                             <HelpInput
-                                help={!country ? getLocale('countryRequired') : undefined}
+                                help={getLocale('countryRequired')}
                                 className='register-input'
-                                prefix={country ? `+${country}` : undefined}
+                                addonBefore={country ? `+${country}` : undefined}
                                 autoComplete='off'
                                 placeholder={getLocale('phonePlaceholder')}
                             />
@@ -135,11 +136,9 @@ interface HelpInputProps extends InputProps {
 
 const HelpInput: React.FC<HelpInputProps> = (props) => {
     const { help, ...restProps } = props;
-    if (help)
-        return <Tooltip overlay={help} placement="topLeft" trigger={['focus']}>
-            <Input {...restProps} />
-        </Tooltip>
-    return <Input {...restProps} />
+    return <Tooltip overlay={help} placement="topLeft" trigger={['focus']}>
+        <Input {...restProps} />
+    </Tooltip>
 }
 
 interface HelpLabelProps {
