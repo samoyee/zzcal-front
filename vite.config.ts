@@ -19,13 +19,14 @@ export default defineConfig({
       },
     },
   },
+  base: '/zzcal/',
   server: {
     proxy: {
       '/api': {
         target: 'http://121.196.216.228:8090',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
-      }
+      },
     }
   },
   resolve: {

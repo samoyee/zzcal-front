@@ -10,31 +10,31 @@ import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
     {
-        path: "/logout",
+        path: "/zzcal/logout",
         action: async () => {
             await auth.signout();
-            return redirect("/login");
+            return redirect("/zzcal/login");
         }
     },
     {
         id: 'welcome',
         Component: WelcomeLayout,
         action: async () => {
-            return redirect('/formula/zziol');
+            return redirect('/zzcal/formula/zziol');
         },
         loader: () => {
             if (auth.getToken()) {
-                return redirect('/formula/zziol')
+                return redirect('/zzcal/formula/zziol')
             }
             return null
         },
         children: [
             {
-                path: '/login',
+                path: '/zzcal/login',
                 Component: Login,
             },
             {
-                path: '/register',
+                path: '/zzcal/register',
                 Component: Register,
             }
         ]
@@ -44,14 +44,14 @@ const router = createBrowserRouter([
         Component: FormulaLayout,
         loader: async () => {
             if (!auth.getToken()) {
-                return redirect('/login')
+                return redirect('/zzcal/login')
             }
             await auth.getUser();
             return { user: auth.user };
         },
         children: [
             {
-                path: '/formula/:formula',
+                path: '/zzcal/formula/:formula',
                 Component: Formula,
             }
         ]
