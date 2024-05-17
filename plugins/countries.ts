@@ -20,7 +20,7 @@ function countries(): Plugin {
                     {
                         injectTo: 'head',
                         tag: 'script',
-                        children: `window.countrys = ${content}; window.countryMap = ${JSON.stringify(jsonMap)};`
+                        children: `window.countrys = ${JSON.stringify(JSON.parse(content))}; window.countryMap = ${JSON.stringify(jsonMap)};`
                     },
                 ]
             }
