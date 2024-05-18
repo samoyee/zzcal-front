@@ -28,6 +28,13 @@
         font-size: 16px;
         border-radius: 4px;
         height: 40px;
+        padding-top: 0;
+        padding-bottom: 0;
+
+        &:hover,
+        &:focus {
+            border-color: #1677ff;
+        }
     }
 
     &-input .ant-input-group-addon {
@@ -37,8 +44,8 @@
 
     &-group &-input {
         display: inline-block;
-        // width: calc(50% -12px);
         width: calc(50% - 12px);
+        height: 40px;
     }
 
     &-group &-input+&-input {

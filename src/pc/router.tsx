@@ -57,7 +57,7 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path: '/zzcal/',
+        path: '/zzcal',
         loader: async () => {
             if (!auth.getToken()) {
                 return redirect('/zzcal/login')

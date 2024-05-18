@@ -13,28 +13,29 @@
         width: 1.2em;
         height: 1.2em;
         position: relative;
+    }
 
-        &-item {
-            position: absolute;
-            font-size: 1.2em;
-            line-height: 1;
-            border: 1px solid rgba(0, 0, 0, 0.88);
-            color: rgba(0, 0, 0, 0.88);
-            right: -5%;
-            bottom: 0;
-            z-index: 0;
-            transform: scale(0.5);
-            transform-origin: 100% 100%;
 
-            &.active {
-                left: -5%;
-                top: 0;
-                z-index: 1;
-                background-color: rgba(0, 0, 0, 0.88);
-                color: #ffffff;
-                transform: scale(0.7);
-                transform-origin: 0 0;
-            }
+    &-icon &-icon-item {
+        position: absolute;
+        font-size: 1.2em;
+        line-height: 1;
+        border: 1px solid rgba(0, 0, 0, 0.88);
+        color: rgba(0, 0, 0, 0.88);
+        right: -5%;
+        bottom: 0;
+        z-index: 0;
+        transform: scale(0.5);
+        transform-origin: 100% 100%;
+
+        &.active {
+            left: -5%;
+            top: 0;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.88);
+            color: #ffffff;
+            transform: scale(0.7);
+            transform-origin: 0 0;
         }
     }
 }

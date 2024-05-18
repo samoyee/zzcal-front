@@ -102,7 +102,7 @@ const Formula: React.FC = () => {
             {({ setFieldValue }) => (
                 <div>
                     {getLocale('uploadTips')}（<a href="https://mskmanager.oss-cn-hangzhou.aliyuncs.com/zzcal/zzmean.xlsx" target="_blank">zz_mean.xlsx</a>），
-                    <Upload showUploadList={false} action="/api/calculate/zzmeanexcel" name='file' onChange={({ file }) => {
+                    <Upload showUploadList={false} action="/calculate/zzmeanexcel" name='file' onChange={({ file }) => {
                         if (file.status === 'done') {
                             msg.destroy('ZZ_MEAN_KEY');
                             const data = file.response?.data;

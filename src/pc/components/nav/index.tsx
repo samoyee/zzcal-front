@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import React, { PropsWithChildren } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './style.less';
+import { Tag } from 'antd';
 
 const Nav: React.FC = () => {
     const getLocale = useGetLocale('nav');
@@ -14,6 +15,7 @@ const Nav: React.FC = () => {
         <h4>{getLocale('rs')}</h4>
         <FormulaLink formula='zzex500'>ZZ EX500</FormulaLink>
         <FormulaLink formula='zzinnoveyes'>ZZ InnovEyes</FormulaLink>
+        <FormulaLink formula='zzinnoveyes2'><Tag color='green'>new</Tag>ZZ InnovEyes</FormulaLink>
         <FormulaLink formula='zzar'>ZZ AR</FormulaLink>
         <FormulaLink formula='zzvr'>ZZ VR</FormulaLink>
         <FormulaLink formula='zzvrpro'>ZZ VR pro</FormulaLink>

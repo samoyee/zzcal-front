@@ -1,14 +1,14 @@
 import { useGetLocale } from '@/locale';
 import { LoadingOutlined } from '@ant-design/icons';
-import { Button, Form, FormInstance, Spin, message } from 'antd';
+import { Button, Form, Spin, message } from 'antd';
 import React, { PropsWithChildren, useState } from 'react';
 import './style.less';
 
 interface FormulaFormProps {
-    initialValues?: Record<string, number | any>;
+    initialValues?: Record<string, unknown>;
     title: string;
-    description: string | string[];
-    request: (data: any) => Promise<void>;
+    description?: string | string[];
+    request: (data: Record<string, unknown>) => Promise<void>;
 }
 
 const FormulaForm: React.FC<FormulaFormProps & PropsWithChildren> = (props) => {

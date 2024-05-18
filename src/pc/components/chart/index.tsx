@@ -14,7 +14,9 @@ const DataChart: React.FC<DataChartProps> = (props) => {
 
     const data: Array<[number, number, string]> = useMemo(() => {
         return props.data.map((item) => {
-            let [cyl, axis, name] = item;
+            const cyl = item[0];
+            let axis = item[1];
+            const name = item[2];
             axis = cyl > 0 ? (axis <= 90 ? axis + 90 : axis - 90) : axis;
             return [Math.abs(cyl), (chartType == "single" ? 1 : 2) * axis, name];
         });
