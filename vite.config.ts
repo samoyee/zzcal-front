@@ -22,10 +22,13 @@ export default defineConfig({
   base: '/zzcal/',
   server: {
     proxy: {
-      '/api': {
+      '/calculate': {
         target: 'http://121.196.216.228:8090',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+      '/userInfo': {
+        target: 'http://121.196.216.228:8090',
+        changeOrigin: true,
       },
     }
   },

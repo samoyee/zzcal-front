@@ -22,7 +22,6 @@ async function service({
     if (params.size) {
         url += `${url}?${params.toString()}`
     }
-    url = `/api${url}`
     const contentType = headers?.['content-type'] || headers?.['Content-Type'] || headers?.contentType || headers?.ContentType
     const response = await fetch(url, {
         method,

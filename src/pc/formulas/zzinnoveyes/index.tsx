@@ -3,14 +3,17 @@ import FormulaForm from '@/pc/components/formula-form';
 import NumberInput from '@/pc/components/number-input';
 import show from '@/pc/components/result';
 import { post } from '@/service';
-import { Col, Form, Row, Statistic } from 'antd';
+import { Col, DatePicker, Form, Row, Statistic } from 'antd';
+import { FormInstance } from 'antd/lib';
+import dayjs, { Dayjs } from 'dayjs';
 import React from 'react';
 
 const Formula: React.FC = () => {
     const getLocale = useGetLocale('zzinnoveyes');
     return <FormulaForm
         title={getLocale('title')}
-        description={getLocale('description')} initialValues={{
+        description={getLocale('description')}
+        initialValues={{
             refrectionb: -0.25,
             refrectionc: 0
         }}
@@ -48,14 +51,25 @@ const Formula: React.FC = () => {
             )
         })}
     >
+        <Form.Item name="birth" label="出生年月" rules={[{ required: true }]}>
+            {
+                ({ setFieldValue }) => {
+                    return <DatePicker onChange={(date) => {
+                        setFieldValue('age', dayjs().diff(date, 'year'))
+                    }} />
+                }
+            }
+
+        </Form.Item>
         <Form.Item noStyle dependencies={['manis']}>
-            {({ getFieldValue, setFieldValue }) =>
-                <Form.Item
+            {({ getFieldValue, setFieldValue }) => {
+                return <Form.Item
                     name="age"
                     label="Age"
                     rules={[{ required: true }]}
                 >
                     <NumberInput
+                        disabled
                         onChange={(age) => {
                             if (age) {
                                 const manis = getFieldValue('manis');
@@ -70,7 +84,7 @@ const Formula: React.FC = () => {
                         }}
                     />
                 </Form.Item>
-            }
+            }}
         </Form.Item>
         <Form.Item label="Mani" dependencies={['age']} required>
             {({ getFieldValue, setFieldValue }) =>
@@ -160,25 +174,25 @@ const Formula: React.FC = () => {
                 <NumberInput placeholder='Axis' />
             </Form.Item>
         </Form.Item>
-        <Form.Item label="Target Refrection" required>
+        <Form.Item label="Inducing Refrection" required>
             <Form.Item
                 noStyle
                 name="refrectiona"
-                label="Target Refrection Sph"
+                label="Inducing Refrection Sph"
                 rules={[{ required: true }]}>
                 <NumberInput placeholder='Sph' precision={2} />
             </Form.Item>
             <Form.Item
                 noStyle
                 name="refrectionb"
-                label="Target Refrection Cyl"
+                label="Inducing Refrection Cyl"
                 rules={[{ required: true }]}>
                 <NumberInput placeholder='Cyl' />
             </Form.Item>
             <Form.Item
                 noStyle
                 name="refrectionc"
-                label="Target Refrection Axis"
+                label="Inducing Refrection Axis"
                 rules={[{ required: true }]}>
                 <NumberInput placeholder='Axis' />
             </Form.Item>

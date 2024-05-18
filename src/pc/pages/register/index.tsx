@@ -15,10 +15,6 @@ const Register: React.FC = () => {
     const [locale] = useLocale();
 
     useEffect(() => {
-        console.log(locale)
-    }, [locale])
-
-    useEffect(() => {
         if (locale === 'zhCN') {
             form.setFieldsValue({
                 country: '中国'
@@ -62,12 +58,26 @@ const Register: React.FC = () => {
                     <Input className='register-input' autoComplete="off" placeholder={getLocale('accountRequired')} />
                 </Form.Item>
                 <Form.Item label={getLocale('nameLabel')} required className='register-group'>
-                    <Form.Item noStyle name="lastName">
-                        <Input className='register-input' autoComplete='off' placeholder={getLocale('lastNameLabel')} />
-                    </Form.Item>
-                    <Form.Item noStyle name="firstName">
-                        <Input className='register-input' autoComplete='off' placeholder={getLocale('firstNameLabel')} />
-                    </Form.Item>
+                    {
+                        locale === 'zhCN' ?
+                            <>
+                                <Form.Item noStyle name="lastName">
+                                    <Input className='register-input' autoComplete='off' placeholder={getLocale('lastNameLabel')} />
+                                </Form.Item>
+                                <Form.Item noStyle name="firstName">
+                                    <Input className='register-input' autoComplete='off' placeholder={getLocale('firstNameLabel')} />
+                                </Form.Item>
+                            </>
+                            :
+                            <>
+                                <Form.Item noStyle name="firstName">
+                                    <Input className='register-input' autoComplete='off' placeholder={getLocale('firstNameLabel')} />
+                                </Form.Item>
+                                <Form.Item noStyle name="lastName">
+                                    <Input className='register-input' autoComplete='off' placeholder={getLocale('lastNameLabel')} />
+                                </Form.Item>
+                            </>
+                    }
                 </Form.Item>
                 <Form.Item name="email" label={getLocale('emailLabel')} required>
                     <Input className='register-input' autoComplete='off' placeholder={getLocale('emailRequired')} />
@@ -96,10 +106,9 @@ const Register: React.FC = () => {
                 <Form.Item noStyle dependencies={['country']}>
                     {({ getFieldValue }) => {
                         const country = window.countryMap[getFieldValue('country')] || '';
-                        console.log('xa', locale, getFieldValue('country'), country);
                         return <Form.Item name="phone" label={getLocale('phoneLabel')}>
                             <HelpInput
-                                help={getLocale('countryRequired')}
+                                help={!country ? getLocale('countryRequired') : undefined}
                                 className='register-input'
                                 addonBefore={country ? `+${country}` : undefined}
                                 autoComplete='off'

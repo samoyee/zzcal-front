@@ -1,6 +1,6 @@
 import { useGetLocale } from '@/locale';
 import { LoadingOutlined } from '@ant-design/icons';
-import { Button, Form, Spin, message } from 'antd';
+import { Button, Form, FormInstance, Spin, message } from 'antd';
 import React, { PropsWithChildren, useState } from 'react';
 import './style.less';
 

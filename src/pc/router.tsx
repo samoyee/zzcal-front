@@ -57,7 +57,23 @@ const router = createBrowserRouter([
         ]
     },
     {
+        path: '/zzcal/',
+        loader: async () => {
+            if (!auth.getToken()) {
+                return redirect('/zzcal/login')
+            }
+            return redirect('/zzcal/formula/zziol')
+        },
+    },
+    {
         path: '*',
+        loader: async () => {
+            if (!auth.getToken()) {
+                return redirect('/zzcal/login')
+            }
+            await auth.getUser();
+            return { user: auth.user };
+        },
         Component: Page404,
     }
 ])
