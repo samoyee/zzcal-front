@@ -22,6 +22,7 @@ async function service<T>({
     if (params.size) {
         url += `${url}?${params.toString()}`
     }
+    url = `/api/zzcal${url}`;
     const contentType = headers?.['content-type'] || headers?.['Content-Type'] || headers?.contentType || headers?.ContentType
     const response = await fetch(url, {
         method,

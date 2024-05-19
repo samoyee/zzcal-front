@@ -34,7 +34,6 @@ const Register: React.FC = () => {
             if (formData.phone && !/\d{8,}/.test(formData.phone)) throw new Error(getLocale('phonePatternError'));
             if (!formData.password) throw new Error(getLocale('passwordRequired'));
             if (formData.password.length < 6 || formData.password.length > 20) throw new Error(getLocale('passwordLenError'));
-            if (!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,20}$/.test(formData.password)) throw new Error(getLocale('passwordPatternError'));
             if (formData.confirmPassword !== formData.password) throw new Error(getLocale('confirmPasswordError'));
 
             await auth.register(formData)

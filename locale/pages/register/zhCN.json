@@ -8,7 +8,6 @@
     "phonePatternError": "电话格式错误",
     "passwordRequired": "请输入密码",
     "passwordLenError": "密码长度必须在6～20位之间",
-    "passwordPatternError": "密码必须至少包含一个数字，一个字母和一个特殊字符",
     "confirmPasswordError": "两次输入密码不一致",
     "okBtn": "知道了",
     "registerBtn": "注册",

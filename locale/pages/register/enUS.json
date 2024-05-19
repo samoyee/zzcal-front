@@ -8,7 +8,6 @@
     "phonePatternError": "Phone format is not correct",
     "passwordRequired": "Please input password",
     "passwordLenError": "Password length between 6 and 20 digits",
-    "passwordPatternError": "Passwords must contain numbers, letters, and special characters",
     "confirmPasswordError": "Twice the password input is inconsistent",
     "okBtn": "OK",
     "registerBtn": "Register",

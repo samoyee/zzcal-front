@@ -7,12 +7,14 @@ interface ILoginUser {
 }
 
 interface IRegisterUser {
-    username: string;
+    account: string;
     password: string;
-    confirmPassword: string;
-    nickname: string;
     email: string;
     phone: string;
+    firstName: string;
+    lastName: string;
+    country: string;
+    institution: string;
 }
 
 export interface IUser {
@@ -26,25 +28,27 @@ export interface IUser {
 
 interface AuthProvider {
     user: IUser | null;
+    token: string | null;
     signin(user: ILoginUser): Promise<void>;
     register(user: IRegisterUser): Promise<void>;
     signout(): Promise<void>;
-    getToken(): number | null;
+    getToken(): string | null;
     getUser(): Promise<void>;
 }
 
 export const auth: AuthProvider = {
     user: null,
+    token: null,
     async signin(user: ILoginUser) {
         try {
-            const data = await post({
+            const token = await post<string>({
                 url: '/userInfo/login',
                 data: {
                     ...user
                 },
-            }) as IUser;
-            auth.user = data;
-            localStorage.setItem('token', `${data.id}`);
+            });
+            auth.token = token
+            localStorage.setItem('token', token);
         } catch (err) {
             if (err instanceof Error) throw err;
             throw new Error(getLocale('login')('loginFail'))
@@ -52,34 +56,45 @@ export const auth: AuthProvider = {
     },
     async register(user: IRegisterUser) {
         try {
-            const data = await post({
-                url: '/userInfo/add',
+            const token = await post<string>({
+                url: '/userInfo/register',
                 data: {
                     ...user
                 },
-            }) as IUser;
-            auth.user = data;
-            localStorage.setItem('token', `${data.id}`);
+            });
+            auth.token = token;
+            localStorage.setItem('token', token);
         } catch (err) {
             if (err instanceof Error) throw err;
             throw new Error(getLocale('register')('registerFail'))
         }
     },
     async signout() {
-        await new Promise((r) => setTimeout(r, 500));
+        await post({
+            url: '/userInfo/logout',
+            headers: {
+                'X-USER-TOKEN': auth.token || '',
+            }
+        })
         localStorage.removeItem('token')
     },
     getToken() {
         const token = localStorage.getItem('token');
-        return token ? Number(token) : null;
+        auth.token = token;
+        return token;
     },
     async getUser() {
-        const user = await post({
-            url: '/userInfo/isLogin',
-        });
-        if (user)
-            this.user = user as IUser;
-        else
+        try {
+            const user = await post({
+                url: '/userInfo/getUser',
+                headers: {
+                    'X-USER-TOKEN': auth.token || '',
+                }
+            });
+            if (user)
+                this.user = user as IUser;
+        } catch (err) {
             localStorage.removeItem('token')
+        }
     }
 };
