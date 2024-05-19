@@ -1,4 +1,4 @@
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Tag } from "antd";
 import classnames from "classnames";
 import React, { useMemo, useState } from "react";
 import { createPortal } from "react-dom";
@@ -20,14 +20,14 @@ function NavList({ nav, active, onChange }) {
                         <ItemGroup key={item.title} title={intl.formatMessage({ id: item.title })}>
                             {item.groups.map((sItem) => (
                                 <Item key={sItem.key} disabled={sItem.disabled}>
-                                    {sItem.title}
+                                    {sItem.title} {sItem.new && <Tag color="green">new</Tag>}
                                 </Item>
                             ))}
                         </ItemGroup>
                     );
                 return (
                     <Item key={item.key} disabled={item.disabled}>
-                        {item.title}
+                        {item.title} {item.new && <Tag color="green">new</Tag>}
                     </Item>
                 );
             })}
