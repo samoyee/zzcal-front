@@ -30,7 +30,7 @@ export default function EX_500_OPMI() {
             <h2>{intl.formatMessage({ id: "calc.innov_eyes.name" })}</h2>
             <div className="calc-form-wrapper">
                 <Form ref={formRef} onCalc={onCalc} onReset={onReset} initialValues={{
-                    inducingb: -0.25,
+                    inducingb: -0.1,
                     inducingc: 0
                 }}>
                     <Row gutter={24}>
@@ -104,7 +104,6 @@ export default function EX_500_OPMI() {
                         <Result
                             data={data}
                             dataKeys={{
-                                age: 'Age',
                                 treats: "Treat S",
                                 treatc: "Treat C",
                                 treatax: "Treat Ax",
