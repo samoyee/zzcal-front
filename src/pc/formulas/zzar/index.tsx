@@ -16,17 +16,17 @@ const Formula: React.FC = () => {
             mode: 'not',
             resLensC: 20,
         }}
-        request={(data) => post({
+        request={(data) => post<Record<string, number>>({
             url: '/calculate/zzar2',
             data
         })
-            .then((result: any) => {
+            .then((result) => {
                 show(
                     <Row>
                         <Col span={12}>
                             <Row gutter={16}>
                                 <Col span={24}>
-                                    <h2>AR</h2>
+                                    <h2>{getLocale('AR')}</h2>
                                 </Col>
                                 <Col span={8}>
                                     <Statistic title="Sph" value={result.arSph} suffix="D" />
@@ -59,7 +59,7 @@ const Formula: React.FC = () => {
                 <Radio value="not">{getLocale("no")}</Radio>
             </Radio.Group>
         </Form.Item>
-        <Form.Item label="Mani" required>
+        <Form.Item label={getLocale('mani')} required>
             <Form.Item
                 noStyle
                 name="maniSph"
@@ -120,7 +120,7 @@ const Formula: React.FC = () => {
             {({ getFieldValue }) =>
                 getFieldValue('mode') === 'available' &&
                 <>
-                    <Form.Item label="Corn-P" required>
+                    <Form.Item label={getLocale('cornP')} required>
                         <Form.Item
                             noStyle
                             name="cornPC"
@@ -138,7 +138,7 @@ const Formula: React.FC = () => {
                     </Form.Item>
                 </>}
         </Form.Item>
-        <Form.Item label="TMR" required>
+        <Form.Item label={getLocale("TMR")} required>
             <Form.Item
                 noStyle
                 name="tmrc"

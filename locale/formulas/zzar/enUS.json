@@ -5,6 +5,11 @@
         "By calculating the compensation diopter while correcting HOAs for virgin cornea"
     ],
     "selector": "Corneal posterior surface astigmatism available or not",
+    "mani": "Manifested",
+    "cornP": "Corneal Posterior surface",
+    "TMR": "Topogray Modified Refraction",
+    "Res": "Reserved",
+    "AR": "After Auto-compensation (No Nomogramm)",
     "yes": "Available",
     "no": "Not"
 }

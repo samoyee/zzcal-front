@@ -8,13 +8,13 @@ interface IService {
     headers?: Record<string, string>
 }
 
-async function service({
+async function service<T>({
     url,
     method,
     data,
     query,
     headers
-}: IService): Promise<unknown> {
+}: IService): Promise<T> {
     const params = new URLSearchParams();
     for (const key in query) {
         params.set(key, query[key]);
@@ -41,10 +41,10 @@ async function service({
     throw json.msg;
 }
 
-export function post(args: Omit<IService, 'method'>) {
-    return service({ ...args, method: 'POST' })
+export function post<T>(args: Omit<IService, 'method'>) {
+    return service<T>({ ...args, method: 'POST' })
 }
 
-export function get(args: Omit<IService, 'method'>) {
-    return service({ ...args, method: 'GET' })
+export function get<T>(args: Omit<IService, 'method'>) {
+    return service<T>({ ...args, method: 'GET' })
 }

@@ -18,7 +18,7 @@ const Nav: React.FC = () => {
         <FormulaLink formula='zzinnoveyes2'><Tag color='green'>new</Tag>ZZ InnovEyes</FormulaLink>
         <FormulaLink formula='zzar'>ZZ AR</FormulaLink>
         <FormulaLink formula='zzvr'>ZZ VR</FormulaLink>
-        <FormulaLink formula='zzvrpro'>ZZ VR pro</FormulaLink>
+        <FormulaLink formula='zzvrpro' disabled>ZZ VR pro</FormulaLink>
         <FormulaLink formula='zzlsa'>ZZ LSA</FormulaLink>
         <FormulaLink formula='zzqd'>ZZ Q.D.</FormulaLink>
         <h4>{getLocale('icl')}</h4>

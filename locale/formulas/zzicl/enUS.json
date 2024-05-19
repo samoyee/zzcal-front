@@ -3,5 +3,13 @@
     "description": [
         "Selection of ICL",
         "To calculate the ICL refraction and estimated vaulting hight"
-    ]
+    ],
+    "mani": "Manifest refraction",
+    "ct": "Corneal Thickness",
+    "ac": "Anterior Chambler Depth(Internal)",
+    "lt": "Lens Thickness",
+    "sts": "Sulcus to Sulcus",
+    "hv": "Horizontal / Vertical",
+    "iclAx": "Direction of ICL major axis",
+    "sia": "Surgically Induced Astigmatism"
 }
