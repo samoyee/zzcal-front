@@ -81,7 +81,7 @@ export const Form = forwardRef(function Form({ children, initialValues, onCalc, 
 
 export const FormList = AForm.List;
 
-export function FormItem({ layout, label, tip, name, required, max, min, rules, disabled, onChange, ...restProps }) {
+export function FormItem({ layout, label, tip, name, required, max, min, rules, disabled, onChange, hidden, ...restProps }) {
     const intl = useIntl();
     const _label = useMemo(() => {
         if (tip) return <Tooltip title={intl.formatMessage({ id: tip })}>{label}</Tooltip>;
@@ -135,7 +135,7 @@ export function FormItem({ layout, label, tip, name, required, max, min, rules, 
 
     return (
         <Col {...stateLayout}>
-            <AForm.Item {...{ ...restProps, name, rules: _rules }} title={label} label={_label}>
+            <AForm.Item {...{ ...restProps, name, rules: _rules }} title={label} label={_label} hidden={hidden}>
                 <InputNumber disabled={disabled} autoComplete="off" className="calc-form-input" onChange={onChange} />
             </AForm.Item>
         </Col>

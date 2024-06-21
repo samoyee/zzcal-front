@@ -20,7 +20,7 @@ export default [
         title: "nav.title.rs",
         groups: [
             { title: "ZZ EX500", key: "ex_500" },
-            { title: "ZZ InnovEyes", key: 'innov_eyes' },
+            // { title: "ZZ InnovEyes", key: 'innov_eyes' },
             { title: "ZZ InnovEyes", new: true, key: 'innov_eyes_two' },
             { title: "ZZ AR", key: "ar" },
             { title: "ZZ VR", key: "vr" },

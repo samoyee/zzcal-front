@@ -34,15 +34,13 @@ export default function EX_500_OPMI() {
                     inducingc: 0
                 }}>
                     <Row gutter={24}>
-                        <FormItem name="yearofb" label="Year of B" required
+                        <FormItem name="yearofb" label="Year of Birth" required
                             onChange={(yearofb) => {
-                                console.log(yearofb);
                                 const form = formRef.current;
                                 const manis = form.getFieldValue('manis') || 0;
                                 const year = yearofb > 100 ? yearofb - parseInt(yearofb / 100) * 100 : yearofb;
                                 const cYear = new Date().getFullYear();
                                 const age = (cYear - year) - parseInt((cYear - year) / 100) * 100
-                                console.log(age);
                                 if (age >= 40) {
                                     form.setFieldsValue({
                                         age,
@@ -95,8 +93,8 @@ export default function EX_500_OPMI() {
                         <FormItem name="defdetailc" label="Def-Detail C" required />
                         <FormItem name="defdetailax" label="Def-Detail Ax" required />
                         <FormItem name="inducinga" label="Inducing Refrection S" required />
-                        <FormItem name="inducingb" label="Inducing Refrection C" required />
-                        <FormItem name="inducingc" label="Inducing Refrection Ax" required />
+                        <FormItem name="inducingb" label="Inducing Refrection C" required hidden />
+                        <FormItem name="inducingc" label="Inducing Refrection Ax" required hidden />
                     </Row>
                 </Form>
                 {data && (
