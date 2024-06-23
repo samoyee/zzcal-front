@@ -1,4 +1,5 @@
 import { getLocale } from "./locale";
+import { ZzcalError } from './error';
 
 interface IService {
     url: string;
@@ -22,7 +23,7 @@ async function service<T>({
     if (params.size) {
         url += `${url}?${params.toString()}`
     }
-    url = `/api/zzcal${url}`;
+    url = `/api${url}`;
     const contentType = headers?.['content-type'] || headers?.['Content-Type'] || headers?.contentType || headers?.ContentType
     const response = await fetch(url, {
         method,
@@ -38,6 +39,9 @@ async function service<T>({
         throw new Error(getLocale('service')('requestError'));
     }
     const json = await response.json();
+    if (!json.success) {
+        throw new ZzcalError(json.code, json.error);
+    }
     if (json.type === 0) return json.data;
     throw json.msg;
 }

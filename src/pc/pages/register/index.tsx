@@ -5,6 +5,7 @@ import { Button, Form, Input, InputProps, Modal, Popover, Select, Tooltip } from
 import React, { PropsWithChildren, useEffect } from 'react';
 import { useNavigate, useSubmit } from 'react-router-dom';
 import './style.less';
+import { ZzcalError } from '@/error';
 
 const Register: React.FC = () => {
     const register = useSubmit()
@@ -24,9 +25,9 @@ const Register: React.FC = () => {
 
     async function onSubmit() {
         try {
-            const formData = form.getFieldsValue();
-            if (!formData.account) throw new Error(getLocale('accountRequired'));
-            if (!formData.lastName || !formData.firstName) throw new Error(getLocale('nameRequired'));
+            const formData = await form.validateFields();
+            if (!formData.username) throw new Error(getLocale('accountRequired'));
+            if (!formData.lastname || !formData.firstname) throw new Error(getLocale('nameRequired'));
             if (!formData.email) throw new Error(getLocale('emailRequired'));
             if (!/^([a-zA-Z]|[0-9])(\w)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(formData.email)) throw new Error(getLocale('emailPatternError'))
             if (!formData.country) throw new Error(getLocale('countryRequired'));
@@ -39,13 +40,23 @@ const Register: React.FC = () => {
             await auth.register(formData)
             register(null);
         } catch (err) {
-            if (err instanceof Error)
+            if (err instanceof ZzcalError) {
+                const error = err.error;
+                const fields = Object.keys(error)
+                    .map(key => ({
+                        name: key,
+                        errors: error[key].errors,
+                    }))
+                form.setFields(fields);
+            }
+            if (err instanceof Error) {
                 modal.info({
                     centered: true,
                     type: 'info',
-                    content: err.message,
+                    content: err.code,
                     okText: getLocale('okBtn')
                 })
+            }
         }
     }
 
@@ -53,26 +64,37 @@ const Register: React.FC = () => {
         {context}
         <div className='register-card'>
             <Form form={form} colon={false} initialValues={{}}>
-                <Form.Item name="account" label={getLocale('accountLabel')} required>
-                    <Input className='register-input' autoComplete="off" placeholder={getLocale('accountRequired')} />
+                <Form.Item name="username" label={getLocale('accountLabel')} required>
+                    <Input
+                        className='register-input'
+                        autoComplete="off"
+                        placeholder={getLocale('accountRequired')}
+                        onChange={() => {
+                            form.setFields([
+                                {
+                                    name: 'username',
+                                    errors: []
+                                }
+                            ])
+                        }} />
                 </Form.Item>
                 <Form.Item label={getLocale('nameLabel')} required className='register-group'>
                     {
                         locale === 'zhCN' ?
                             <>
-                                <Form.Item noStyle name="lastName">
+                                <Form.Item noStyle name="lastname">
                                     <Input className='register-input' autoComplete='off' placeholder={getLocale('lastNameLabel')} />
                                 </Form.Item>
-                                <Form.Item noStyle name="firstName">
+                                <Form.Item noStyle name="firstname">
                                     <Input className='register-input' autoComplete='off' placeholder={getLocale('firstNameLabel')} />
                                 </Form.Item>
                             </>
                             :
                             <>
-                                <Form.Item noStyle name="firstName">
+                                <Form.Item noStyle name="firstname">
                                     <Input className='register-input' autoComplete='off' placeholder={getLocale('firstNameLabel')} />
                                 </Form.Item>
-                                <Form.Item noStyle name="lastName">
+                                <Form.Item noStyle name="lastname">
                                     <Input className='register-input' autoComplete='off' placeholder={getLocale('lastNameLabel')} />
                                 </Form.Item>
                             </>
@@ -130,7 +152,7 @@ const Register: React.FC = () => {
             </Form>
             <Button onClick={onSubmit} type='primary' className='register-btn'>{getLocale('registerBtn')}</Button>
             <div className='register-back'>
-                <a onClick={() => navigate("/zzcal/login")}>{getLocale('backBtn')}</a>
+                <a onClick={() => navigate("/login")}>{getLocale('backBtn')}</a>
             </div>
         </div>
     </div>;

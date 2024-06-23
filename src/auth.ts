@@ -7,12 +7,12 @@ interface ILoginUser {
 }
 
 interface IRegisterUser {
-    account: string;
+    username: string;
     password: string;
     email: string;
     phone: string;
-    firstName: string;
-    lastName: string;
+    firstname: string;
+    lastname: string;
     country: string;
     institution: string;
 }
@@ -86,7 +86,7 @@ export const auth: AuthProvider = {
     async getUser() {
         try {
             const user = await post({
-                url: '/userInfo/getUser',
+                url: '/userInfo/isLogin',
                 headers: {
                     'X-USER-TOKEN': auth.token || '',
                 }

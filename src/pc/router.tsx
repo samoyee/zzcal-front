@@ -10,31 +10,31 @@ import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
     {
-        path: "/zzcal/logout",
+        path: "/logout",
         action: async () => {
             await auth.signout();
-            return redirect("/zzcal/login");
+            return redirect("/login");
         }
     },
     {
         id: 'welcome',
         Component: WelcomeLayout,
         action: async () => {
-            return redirect('/zzcal/formula/zziol');
+            return redirect('/formula/zziol');
         },
         loader: () => {
             if (auth.getToken()) {
-                return redirect('/zzcal/formula/zziol')
+                return redirect('/formula/zziol')
             }
             return null
         },
         children: [
             {
-                path: '/zzcal/login',
+                path: '/login',
                 Component: Login,
             },
             {
-                path: '/zzcal/register',
+                path: '/register',
                 Component: Register,
             }
         ]
@@ -44,32 +44,32 @@ const router = createBrowserRouter([
         Component: FormulaLayout,
         loader: async () => {
             if (!auth.getToken()) {
-                return redirect('/zzcal/login')
+                return redirect('/login')
             }
             await auth.getUser();
             return { user: auth.user };
         },
         children: [
             {
-                path: '/zzcal/formula/:formula',
+                path: '/formula/:formula',
                 Component: Formula,
             }
         ]
     },
     {
-        path: '/zzcal',
+        path: '/',
         loader: async () => {
             if (!auth.getToken()) {
-                return redirect('/zzcal/login')
+                return redirect('/login')
             }
-            return redirect('/zzcal/formula/zziol')
+            return redirect('/formula/zziol')
         },
     },
     {
         path: '*',
         loader: async () => {
             if (!auth.getToken()) {
-                return redirect('/zzcal/login')
+                return redirect('/login')
             }
             await auth.getUser();
             return { user: auth.user };
