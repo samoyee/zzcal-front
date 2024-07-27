@@ -29,14 +29,13 @@ const Register: React.FC = () => {
             if (!formData.username) throw new Error(getLocale('accountRequired'));
             if (!formData.lastname || !formData.firstname) throw new Error(getLocale('nameRequired'));
             if (!formData.email) throw new Error(getLocale('emailRequired'));
-            if (!/^([a-zA-Z]|[0-9])(\w)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(formData.email)) throw new Error(getLocale('emailPatternError'))
+            if (!/^([A-Za-z0-9_\-\\.])+@([A-Za-z0-9_\-\\.])+\.([A-Za-z]{2,})$/.test(formData.email)) throw new Error(getLocale('emailPatternError'))
             if (!formData.country) throw new Error(getLocale('countryRequired'));
             if (!formData.institution) throw new Error(getLocale('institutionRequired'));
             if (formData.phone && !/\d{8,}/.test(formData.phone)) throw new Error(getLocale('phonePatternError'));
             if (!formData.password) throw new Error(getLocale('passwordRequired'));
             if (formData.password.length < 6 || formData.password.length > 20) throw new Error(getLocale('passwordLenError'));
             if (formData.confirmPassword !== formData.password) throw new Error(getLocale('confirmPasswordError'));
-
             await auth.register(formData)
             register(null);
         } catch (err: unknown) {
