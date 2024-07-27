@@ -56,8 +56,8 @@ const Formula: React.FC = () => {
         request={async (data) => {
             try {
                 const formData = new FormData();
-                for (let key in data) {
-                    formData.append(key, data[key])
+                for (const key in data) {
+                    formData.append(key, data[key] as string)
                 }
                 const userId = auth.getToken();
                 const outTradeNo = dayjs().format("YYYYMMDDHHmmssSSS");

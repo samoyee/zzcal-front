@@ -40,7 +40,7 @@ const Register: React.FC = () => {
             register(null);
         } catch (err: unknown) {
             if (err instanceof ZzcalError) {
-                const error = err.error;
+                const error = err.error as Record<string, { errors: string[] }>;
                 const fields = Object.keys(error)
                     .map(key => ({
                         name: key,
