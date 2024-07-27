@@ -48,7 +48,7 @@ const Register: React.FC = () => {
             </Form>
             <Button onClick={onSubmit} color='primary' block className='register-btn'>注册</Button>
             <div className='register-forget'>
-                <a onClick={() => navigate("/login")}>返回登录</a>
+                <a onClick={() => navigate("/zzcal/login")}>返回登录</a>
             </div>
         </div>
     </div>;

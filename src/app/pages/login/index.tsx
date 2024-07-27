@@ -36,10 +36,10 @@ const Login: React.FC = () => {
             </Form>
             <Button onClick={onSubmit} color='primary' block className='login-btn'>提交</Button>
             <div className='login-forget'>
-                <a onClick={() => navigate("/forget")}>忘记密码？</a>
+                <a onClick={() => navigate("/zzcal/forget")}>忘记密码？</a>
             </div>
             <div className='login-create-count'>
-                <a onClick={() => navigate('/register')}>新建账号？</a>
+                <a onClick={() => navigate('/zzcal/register')}>新建账号？</a>
             </div>
         </div>
     </div>;
