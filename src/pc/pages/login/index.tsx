@@ -34,6 +34,8 @@ const Login: React.FC = () => {
     return <div className='login'>
         {context}
         <div className='login-card'>
+            <h2>{getLocale("loginTitle")}</h2>
+            <h4>{getLocale("loginSubTitle")}</h4>
             <Form form={form} component={false}>
                 <Form.Item name="username">
                     <Input className='login-input' prefix={<UserOutlined />} placeholder={getLocale('usernameRequired')} autoComplete="off" />

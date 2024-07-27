@@ -23,8 +23,11 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:8090',
+        target: 'https://www.zzcal.com/api',
         changeOrigin: true,
+        rewrite(path) {
+          return path.replace('/api', '/');
+        }
       },
     }
   },

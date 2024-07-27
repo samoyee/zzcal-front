@@ -13,11 +13,16 @@
 
     &-banner {
         background-image: url("https://mskmanager.oss-cn-hangzhou.aliyuncs.com/zzcal/banner.jpg");
-        background-size: cover;
+        background-size: 100% auto;
         background-repeat: no-repeat;
-        background-position: 70% center;
-        width: 50vw;
+        background-position: center;
+        width: 100vw;
         height: 100vh;
+        position: absolute;
+        user-select: none;
+        pointer-events: none;
+        top: 0;
+        left: 0;
     }
 
     &-main {
@@ -29,8 +34,8 @@
     &-copyright {
         position: absolute;
         bottom: 12px;
-        left: 50vw;
-        width: 50vw;
+        left: 0;
+        width: 100vw;
         display: flex;
         align-items: center;
         justify-content: center;

@@ -5,5 +5,7 @@
     "forgetBtn": "Forget?",
     "loginBtn": "Log In",
     "createBtn": "Add?",
-    "loginFail": "Account or password was wrong"
+    "loginFail": "Account or password was wrong",
+    "loginTitle": "Welcome to ZZ Formula",
+    "loginSubTitle": "a refractive design service platform"
 }

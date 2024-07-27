@@ -39,7 +39,7 @@ const Register: React.FC = () => {
 
             await auth.register(formData)
             register(null);
-        } catch (err) {
+        } catch (err: unknown) {
             if (err instanceof ZzcalError) {
                 const error = err.error;
                 const fields = Object.keys(error)
@@ -53,7 +53,7 @@ const Register: React.FC = () => {
                 modal.info({
                     centered: true,
                     type: 'info',
-                    content: err.code,
+                    content: err.message,
                     okText: getLocale('okBtn')
                 })
             }
