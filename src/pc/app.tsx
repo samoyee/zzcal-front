@@ -8,7 +8,7 @@ const App: React.FC = () => {
 
     useEffect(() => {
         const ua = window.navigator.userAgent;
-        if (/Chrome/.test(ua)) {
+        if (!/Chrome/.test(ua)) {
             Modal.info({
                 closable: false,
                 maskClosable: false,

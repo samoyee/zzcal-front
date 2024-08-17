@@ -49,8 +49,8 @@ const Formula: React.FC = () => {
           <Col span={12}>
             <DataChart
               data={[
-                [data.cyl1, data.axis1, "A"],
-                [data.cyl2, data.axis2, "B"],
+                [data.cyl1 as number, data.axis1 as number, "A"],
+                [data.cyl2 as number, data.axis2 as number, "B"],
                 [result.cyl1add2, result.axis1add2, "A + B"],
                 [result.cyl1cut2, result.axis1cut2, "A - B"],
               ]}
