@@ -14,9 +14,12 @@ const FormulaLayout: React.FC = () => {
 
     return <>
         <div className='formula-layout-top'>
-            <div>{user?.nickname}</div>
-            <Locale />
-            <a className='formula-layout-logout' onClick={() => logout(null, { action: '/zzcal/logout', method: 'post' })}>{getLocale('logout')}</a>
+            <div className='formula-layout-title'>ZZ Formula</div>
+            <div>
+                <div>{user?.nickname}</div>
+                <Locale />
+                <a className='formula-layout-logout' onClick={() => logout(null, { action: '/zzcal/logout', method: 'post' })}>{getLocale('logout')}</a>
+            </div>
         </div>
         <div className='formula-layout-main'>
             <div className='formula-layout-nav'>

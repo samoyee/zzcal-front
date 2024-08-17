@@ -2,7 +2,12 @@
     "title": "ZZ AR (Auto-compensation Refraction)",
     "description": [
         "Used to assist surgical strategy planning for Topo-Guide refractive surgery",
-        "By calculating the compensation diopter while correcting HOAs for virgin cornea"
+        "By calculating the compensation diopter while correcting HOAs for virgin cornea",
+        "Mani=Manifested",
+        "Corn-P=Corneal Posterior surface",
+        "TMR=Topogray Modified Refraction",
+        "Res=Reserved",
+        "AR=After Auto-compensation (No Nomogramm)"
     ],
     "selector": "Corneal posterior surface astigmatism available or not",
     "mani": "Manifested",

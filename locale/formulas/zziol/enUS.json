@@ -2,6 +2,12 @@
     "title": "ZZ IOL",
     "description": [
         "Selection of IOL (Intra-ocula Lens) for normal cornea",
-        "To calculate the IOL refraction"
+        "To calculate the IOL refraction",
+        "SE=Spherical Equivalent",
+        "AL=Axial Length",
+        "ACD=Anterior Chambler Depth (External)",
+        "LT=Lens Thickness",
+        "PP=Puple Power (4mm) (Available from CSO Sirius or Zeus) [Theoretically equivalent to TCRP (Total Corneal Refractive Power)]",
+        "CCT=Central Corneal Thickness"
     ]
 }

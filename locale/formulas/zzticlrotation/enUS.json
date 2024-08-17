@@ -2,6 +2,11 @@
     "title": "ZZ TICL Rotation",
     "description": [
         "Design of surgical strategy for adjustment of TICL(Toric Implantable Collamer Lens) axis error",
-        "To calculate the adjustment direction and angle of TICL in the current state, in order to reduce the residual astigmatism"
+        "To calculate the adjustment direction and angle of TICL in the current state, in order to reduce the residual astigmatism",
+        "No new main incision",
+        "no replacement of TICL",
+        "Mani=Manifest refraction before TICL implantation",
+        "Resi=Residual manifest refraction after TICL implantation",
+        "SIA=Surgically Induced Astigmatism"
     ]
 }

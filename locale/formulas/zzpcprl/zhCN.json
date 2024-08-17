@@ -2,6 +2,9 @@
     "title": "PC-PRL屈光度",
     "description": [
         "辅助PC-PRL晶体屈光度的选择",
-        "计算PC-PRL屈光度"
+        "计算PC-PRL屈光度",
+        "Mani=主觉验光度",
+        "CT=角膜厚度（选填）",
+        "AC=前房深度（内皮）"
     ]
 }

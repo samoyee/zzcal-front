@@ -2,7 +2,15 @@
     "title": "ZZ ICL(Implantable Collamer Lens)",
     "description": [
         "Selection of ICL",
-        "To calculate the ICL refraction and estimated vaulting hight"
+        "To calculate the ICL refraction and estimated vaulting hight",
+        "Mani=Manifest refraction",
+        "CT=Corneal Thickness",
+        "AC=Anterior Chambler Depth (Internal)",
+        "LT=Lens Thickness",
+        "STS=Sulcus to Sulcus",
+        "H/V=Horizontal / Vertical",
+        "ICL Ax=Direction of ICL major axis",
+        "SIA=Surgically Induced Astigmatism"
     ],
     "mani": "Manifest refraction",
     "ct": "Corneal Thickness",

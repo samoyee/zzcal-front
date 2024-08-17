@@ -2,6 +2,9 @@
     "title": "PC-PRL Refraction",
     "description": [
         "Selection of PC-PRL",
-        "To calculate the PC-PRL refraction"
+        "To calculate the PC-PRL refraction",
+        "Mani=Manifest refraction",
+        "CT=Corneal Thickness(Optional)",
+        "AC=Anterior Chambler Depth (Internal)"
     ]
 }

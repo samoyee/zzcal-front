@@ -2,6 +2,11 @@
     "title": "ZZ LSA Q.D.",
     "description": [
         "Design of surgical strategy for Q-value guide refractive surgery",
-        "To calculate the ΔQ and the compensated diopter, for obtaining the expected ΔLSA (Longitudinal Spherical Aberration, Diopter)"
+        "To calculate the ΔQ and the compensated diopter, for obtaining the expected ΔLSA (Longitudinal Spherical Aberration, Diopter)",
+        "Kf=Tangential Curvature",
+        "e=ecc of cornea (5mm)",
+        "PSA=primary spherical aberration (5mm)",
+        "Biomechanical changes have been taken into account in the target Q (PostOP-1m Q=target Q+0.3)",
+        "Q. D. =Compensated Diopter, when the Q-value is changed"
     ]
 }

@@ -2,7 +2,13 @@
     "title": "ZZ IOL Pro",
     "description": [
         "Selection of various corneal IOL",
-        "Upload the value of A constant, Target D, AL, LT and the raw data of corneal tomographic is needed"
+        "Upload the value of A constant, Target D, AL, LT and the raw data of corneal tomographic is needed",
+        "AL=Axial Length",
+        "LT=Lens Thickness",
+        "SE=Sperical Equivalant",
+        "AC=Anterior Chambler Depth (Internal)",
+        "目前仅支持CSO公司Sirius或Zeus设备下的.zcs文档（包含至少5次重复性好的检查结果）",
+        "200块 / 次 （付费成功后，结果会在48小时内给出）"
     ],
     "PAY_ERROR": "Pay error",
     "EMPTY_TRADE_NO": "Trade No cannot be empty",

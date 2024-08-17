@@ -11,6 +11,7 @@ const Formula: React.FC = () => {
   return <FormulaForm
     title={getLocale('title')}
     description={getLocale('description')}
+    warning="计算结果仅供参考，实际结果以EX500设备为准"
     request={(data) => post<Record<string, number>>({
       url: '/calculate/zzexformula',
       data
@@ -30,9 +31,6 @@ const Formula: React.FC = () => {
             <Statistic value={result.um2} suffix="μm" />
           </Col>
         </Row>,
-        // {
-        //   attention: "计算结果仅供参考，实际结果以EX500设备为准"
-        // }
       )
     })}>
     <Form.Item

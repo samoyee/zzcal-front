@@ -3,13 +3,13 @@ import FormulaForm from '@/pc/components/formula-form';
 import NumberInput from '@/pc/components/number-input';
 import { setResult } from '@/pc/components/result';
 import { post } from '@/service';
-import { Col, Form, Row, Statistic, Upload, message } from 'antd';
+import * as XLSX from 'xlsx';
+import { Col, Form, Row, Statistic, Upload } from 'antd';
 import React from 'react';
 import './index.less';
 
 const Formula: React.FC = () => {
   const getLocale = useGetLocale('zzmeansdvector');
-  const [msg, msgHolder] = message.useMessage();
   return <FormulaForm
     title={getLocale('title')}
     description={getLocale('description')}
@@ -47,7 +47,6 @@ const Formula: React.FC = () => {
       )
     })}
   >
-    {msgHolder}
     <Form.List name="zzMeanInfos">
       {(fields, { add, remove }) => {
         return <>
@@ -102,17 +101,23 @@ const Formula: React.FC = () => {
       {({ setFieldValue }) => (
         <div>
           {getLocale('uploadTips')}（<a href="https://mskmanager.oss-cn-hangzhou.aliyuncs.com/zzcal/zzmean.xlsx" target="_blank">zz_mean.xlsx</a>），
-          <Upload showUploadList={false} action="/calculate/zzmeanexcel" name='file' onChange={({ file }) => {
-            if (file.status === 'done') {
-              msg.destroy('ZZ_MEAN_KEY');
-              const data = file.response?.data;
-              if (data?.zzMeanInfos?.length > 0) {
-                setFieldValue('zzMeanInfos', data?.zzMeanInfos)
+          <Upload
+            showUploadList={false}
+            beforeUpload={() => false}
+            onChange={({ file }) => {
+              const fr = new FileReader();
+              fr.onload = (ev) => {
+                const work = XLSX.read(ev.target?.result, { type: 'buffer' })
+                const data = XLSX.utils.sheet_to_json<{ Sph: number; Cyl: number; Axis: number }>(work.Sheets[work.SheetNames[0]])
+                console.log(data);
+                setFieldValue('zzMeanInfos', data?.map(item => ({
+                  sph: item.Sph,
+                  cyl: item.Cyl,
+                  axis: item.Axis,
+                })))
               }
-            } else {
-              msg.loading({ content: getLocale("loading"), key: 'ZZ_MEAN_KEY' })
-            }
-          }}>
+              fr.readAsArrayBuffer(file as unknown as File);
+            }}>
             <a>{getLocale('btnUpload')}</a>
           </Upload>
         </div>

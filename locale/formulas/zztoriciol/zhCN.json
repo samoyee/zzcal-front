@@ -2,6 +2,14 @@
     "title": "ZZ TIOL",
     "description": [
         "辅助常规患者Toric IOL屈光度选择",
-        "计算Toric IOL屈光度和轴位"
+        "计算Toric IOL屈光度和轴位",
+        "SE=等效球镜",
+        "AL=眼轴长度",
+        "ACD=前房深度（外）",
+        "LT=晶体厚度",
+        "PP=瞳孔屈光力（4mm）（可获取设备如CSO公司Sirius或Zeus）【理论上等效于全角膜屈光力】",
+        "Corn Asti=全角膜散光（4mm）",
+        "SIA=术源性散光",
+        "CCT=中央角膜厚度"
     ]
 }

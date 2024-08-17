@@ -1,6 +1,14 @@
 {
     "title": "ZZ IOL Pro",
-    "description": "辅助任何角膜形态IOL屈光度的选择，需要上传A常数、目标屈光度、眼轴长度、晶体厚度和角膜断层扫描图的原始文档",
+    "description": [
+        "辅助任何角膜形态IOL屈光度的选择，需要上传A常数、目标屈光度、眼轴长度、晶体厚度和角膜断层扫描图的原始文档",
+        "AL=Axial Length",
+        "LT=Lens Thickness",
+        "SE=Sperical Equivalant",
+        "AC=Anterior Chambler Depth (Internal)",
+        "Currently only CSO Sirius or Zeus .zcs documents are supported (include more than 5 repeatable results)",
+        "RMB 200 Each (After the payment is successful, the result will be given within 48 hours)"
+    ],
     "PAY_ERROR": "支付遇到错误，请稍后再试",
     "EMPTY_TRADE_NO": "订单号不为空",
     "PAY_FAIL": "支付失败",

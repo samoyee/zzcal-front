@@ -20,34 +20,30 @@ const Formula: React.FC = () => {
       data
     }).then((result) => {
       setResult(
-        <Row>
-          <Col span={12}>
-            <Row gutter={16}>
-              <Col span={24}>
-                <h2>VR</h2>
-              </Col>
-              <Col span={8}>
-                <Statistic title="Sph" value={result.vrSph} suffix="D" />
-              </Col>
-              <Col span={8}>
-                <Statistic title="Cyl" value={result.vrCyl} suffix="D" />
-              </Col>
-              <Col span={8}>
-                <Statistic title="Axis" value={result.vrAxis} />
-              </Col>
-            </Row>
-          </Col>
-          <Col span={12}>
-            <DataChart
-              data={[
-                [result.maniCyl, result.maniAxis, "Manifest Astigmatism"],
-                [result.comaCyl, result.comaAxis, "COMA Astigmatism"],
-                [result.secAstiD2, result.secAstiD3, "Secondary Astigmatism"],
-                [result.vrCyl, result.vrAxis, "VR"],
-              ]}
-            />
-          </Col>
-        </Row>
+        <>
+          <Row gutter={16}>
+            <Col span={24}>
+              <h2>VR</h2>
+            </Col>
+            <Col span={8}>
+              <Statistic title="Sph" value={result.vrSph} suffix="D" />
+            </Col>
+            <Col span={8}>
+              <Statistic title="Cyl" value={result.vrCyl} suffix="D" />
+            </Col>
+            <Col span={8}>
+              <Statistic title="Axis" value={result.vrAxis} />
+            </Col>
+          </Row>
+          <DataChart
+            data={[
+              [result.maniCyl, result.maniAxis, "Manifest Astigmatism"],
+              [result.comaCyl, result.comaAxis, "COMA Astigmatism"],
+              [result.secAstiD2, result.secAstiD3, "Secondary Astigmatism"],
+              [result.vrCyl, result.vrAxis, "VR"],
+            ]}
+          />
+        </>
       )
     })}
   >

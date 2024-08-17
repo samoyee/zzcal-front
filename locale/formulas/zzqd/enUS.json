@@ -2,6 +2,9 @@
     "title": "ZZ Q.D.",
     "description": [
         "Design of surgical strategy for Q-value guide refractive surgery",
-        "To calculate the compensated diopter, when the Q-value is changed."
+        "To calculate the compensated diopter, when the Q-value is changed.",
+        "SD=Spherical Diopter",
+        "e=ecc of cornea",
+        "Target D=D after compensation"
     ]
 }

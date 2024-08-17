@@ -10,6 +10,7 @@ const Formula: React.FC = () => {
   const getLocale = useGetLocale('zzinnoveyes');
   return <FormulaForm
     title={getLocale('title')}
+    description={getLocale('description')}
     initialValues={{
       inducinga: 0.05,
       inducingb: -0.25,
@@ -55,19 +56,80 @@ const Formula: React.FC = () => {
       )
     })}
   >
-    <Form.Item name="yearofb" label="Year of B" rules={[{ required: true }]}>
-      <NumberInput />
+    <Form.Item noStyle dependencies={['manis']}>
+      {({ getFieldValue, setFieldsValue }) => (
+        <Form.Item name="yearofb" label="Year of B" rules={[{ required: true }]}>
+          <NumberInput
+            onChange={(yearofb) => {
+              const manis = getFieldValue('manis');
+              if (typeof yearofb === 'number' && typeof manis === 'number') {
+                const year = yearofb > 100 ? yearofb - Math.floor(yearofb / 100) * 100 : yearofb;
+                const cYear = new Date().getFullYear();
+                const age = (cYear - year) - Math.floor((cYear - year) / 100) * 100
+                if (age >= 40) {
+                  setFieldsValue({
+                    age,
+                    inducinga: -0.1,
+                  })
+                } else if (age >= 25) {
+                  setFieldsValue({
+                    age,
+                    inducinga: ((40 - age) * 0.025).toFixed(2)
+                  })
+                } else {
+                  setFieldsValue({
+                    age,
+                    inducinga: ((40 - age) * 0.025 - manis * 0.025).toFixed(2)
+                  })
+                }
+              }
+
+            }}
+          />
+        </Form.Item>
+      )}
     </Form.Item>
+
     <Form.Item label="Mani" required>
-      <Form.Item
-        noStyle
-        name="manis"
-        label="Mani Sph"
-        rules={[{ required: true }]}>
-        <NumberInput
-          placeholder='Sph'
-          suffix="D"
-        />
+      <Form.Item noStyle dependencies={['yearofb']}>
+        {({ getFieldValue, setFieldsValue }) => (
+          <Form.Item
+            noStyle
+            name="manis"
+            label="Mani Sph"
+            rules={[{ required: true }]}>
+            <NumberInput
+              placeholder='Sph'
+              suffix="D"
+              onChange={(manis) => {
+                const yearofb = getFieldValue('yearofb')
+                if (typeof yearofb === 'number' && typeof manis === 'number') {
+                  const year = yearofb > 100 ? yearofb - Math.floor(yearofb / 100) * 100 : yearofb;
+                  const cYear = new Date().getFullYear();
+                  const age = (cYear - year) - Math.floor((cYear - year) / 100) * 100
+
+                  if (age >= 40) {
+                    setFieldsValue({
+                      age,
+                      inducinga: -0.1,
+                    })
+                  } else if (age >= 25) {
+                    setFieldsValue({
+                      age,
+                      inducinga: ((40 - age) * 0.025).toFixed(2)
+                    })
+                  } else {
+                    setFieldsValue({
+                      age,
+                      inducinga: ((40 - age) * 0.025 - manis * 0.025).toFixed(2)
+                    })
+                  }
+                }
+
+              }}
+            />
+          </Form.Item>
+        )}
       </Form.Item>
       <Form.Item
         noStyle

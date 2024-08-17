@@ -2,6 +2,14 @@
     "title": "ZZ TIOL",
     "description": [
         "Selection of Toric IOL (Intra-ocula Lens) for normal cornea",
-        "To calculate the Toric IOL refraction and axis"
+        "To calculate the Toric IOL refraction and axis",
+        "SE=Spherical Equivalent",
+        "AL=Axial Length",
+        "ACD=Anterior Chambler Depth (External)",
+        "LT=Lens Thickness",
+        "PP=Puple Power (4mm) (Available from CSO Sirius or Zeus) [Theoretically equivalent to TCRP (Total Corneal Refractive Power)]",
+        "Corn Asti=Corneal Astigmatism (4mm)",
+        "SIA=Surgically Induced Astigmatism",
+        "CCT=Central Corneal Thickness"
     ]
 }

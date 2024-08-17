@@ -2,6 +2,9 @@
     "title": "ZZ VR (Vector-compensation Refraction)",
     "description": [
         "Used to assist surgical strategy planning for Topo-Guide / Wavefront-Guide refractive surgery",
-        "By calculating the compensation diopter while correcting HOAs for special treatment"
+        "By calculating the compensation diopter while correcting HOAs for special treatment",
+        "C7~C13=Corresponded HOAs under selected Opic Zone in the excimer device, Optical Society of America(OSA) Standard (μm)",
+        "Mani=Manifest refraction",
+        "VR=After vector-compensation (No Nomogramm)"
     ]
 }
