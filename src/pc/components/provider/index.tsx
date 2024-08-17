@@ -1,4 +1,4 @@
-import { LocaleProvider, useLocale } from "@/locale";
+import { useLocale } from "@/locale";
 import { ConfigProvider } from "antd";
 import enUS from 'antd/locale/en_US';
 import zhCN from 'antd/locale/zh_CN';
@@ -6,6 +6,7 @@ import { useEffect, type PropsWithChildren } from "react";
 import dayjs from "dayjs";
 import 'dayjs/locale/en';
 import 'dayjs/locale/zh-cn';
+import StoreProvider from "@/privider";
 
 const LOCALE = {
     zhCN,
@@ -18,11 +19,9 @@ const DAY_LOCALE = {
 }
 
 const Provider: React.FC<PropsWithChildren> = (props) => {
-    return <LocaleProvider>
-        <AntdProvider>
-            {props.children}
-        </AntdProvider>
-    </LocaleProvider>
+    return <AntdProvider>
+        {props.children}
+    </AntdProvider>
 }
 
 export default Provider;
@@ -34,7 +33,9 @@ const AntdProvider: React.FC<PropsWithChildren> = (props) => {
         dayjs.locale(DAY_LOCALE[locale])
     }, [locale]);
 
-    return <ConfigProvider locale={LOCALE[locale]} wave={{ disabled: true }}>
-        {props.children}
-    </ConfigProvider>
+    return <StoreProvider>
+        <ConfigProvider locale={LOCALE[locale]} wave={{ disabled: true }}>
+            {props.children}
+        </ConfigProvider>
+    </StoreProvider>
 }

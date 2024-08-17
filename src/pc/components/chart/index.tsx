@@ -22,7 +22,7 @@ const DataChart: React.FC<DataChartProps> = (props) => {
         });
     }, [chartType, props.data])
 
-    return <>
+    return <div className="chart">
         <Radio.Group
             options={[
                 {
@@ -42,7 +42,7 @@ const DataChart: React.FC<DataChartProps> = (props) => {
             data={data}
             maxAngle={chartType === 'single' ? 180 : 360}
         />
-    </>
+    </div>
 }
 
 export default DataChart;

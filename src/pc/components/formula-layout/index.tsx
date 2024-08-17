@@ -5,6 +5,7 @@ import Nav from '@/pc/components/nav';
 import React from 'react';
 import { Outlet, useRouteLoaderData, useSubmit } from 'react-router-dom';
 import './style.less';
+import Result from '../result';
 
 const FormulaLayout: React.FC = () => {
     const { user } = useRouteLoaderData('root') as { user: IUser };
@@ -23,6 +24,9 @@ const FormulaLayout: React.FC = () => {
             </div>
             <div className='formula-layout-content'>
                 <Outlet />
+            </div>
+            <div className='formula-layout-result'>
+                <Result />
             </div>
         </div>
     </>

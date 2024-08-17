@@ -1,7 +1,7 @@
 import { useGetLocale } from '@/locale';
 import FormulaForm from '@/pc/components/formula-form';
 import NumberInput from '@/pc/components/number-input';
-import show from '@/pc/components/result';
+import { setResult } from '@/pc/components/result';
 import { post } from '@/service';
 import { Col, Form, Row, Statistic } from 'antd';
 import React from 'react';
@@ -11,11 +11,11 @@ const Formula: React.FC = () => {
   return <FormulaForm
     title={getLocale('title')}
     description={getLocale('description')}
-    request={(data) => post({
+    request={(data) => post<Record<string, number>>({
       url: '/calculate/zzexformula',
       data
-    }).then((result: any) => {
-      show(
+    }).then((result) => {
+      setResult(
         <Row gutter={16}>
           <Col span={24}>
             <h2>消融厚度</h2>
@@ -30,9 +30,9 @@ const Formula: React.FC = () => {
             <Statistic value={result.um2} suffix="μm" />
           </Col>
         </Row>,
-        {
-          attention: "计算结果仅供参考，实际结果以EX500设备为准"
-        }
+        // {
+        //   attention: "计算结果仅供参考，实际结果以EX500设备为准"
+        // }
       )
     })}>
     <Form.Item

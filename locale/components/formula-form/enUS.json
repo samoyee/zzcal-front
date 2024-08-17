@@ -1,5 +1,6 @@
 {
     "button": "Get Result",
+    "clear": "清空",
     "loading": "Loading...",
     "required": "${label} is required!"
 }

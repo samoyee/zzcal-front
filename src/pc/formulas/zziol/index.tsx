@@ -1,7 +1,7 @@
 import { useGetLocale } from '@/locale';
 import FormulaForm from '@/pc/components/formula-form';
 import NumberInput from '@/pc/components/number-input';
-import show from '@/pc/components/result';
+import { setResult } from '@/pc/components/result';
 import { post } from '@/service';
 import { Col, Form, Row, Statistic } from 'antd';
 import React from 'react';
@@ -16,11 +16,11 @@ const Formula: React.FC = () => {
       cct: 500,
       lt: 5,
     }}
-    request={(data) => post({
+    request={(data) => post<Record<string, number>>({
       url: '/calculate/zzcaliol',
       data
-    }).then((result: any) => {
-      show(
+    }).then((result) => {
+      setResult(
         <Row gutter={16}>
           <Col span={24}>
             <h2>IOL</h2>

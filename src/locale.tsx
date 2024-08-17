@@ -1,6 +1,6 @@
-import { Provider, createStore, useAtom, useAtomValue, useSetAtom } from 'jotai';
+import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 import { atomWithStorage } from 'jotai/utils';
-import { PropsWithChildren } from 'react';
+import { atomStore } from './privider';
 
 type Locale = 'zhCN' | 'enUS'
 
@@ -25,14 +25,8 @@ export const useLocale = () => {
     return useAtom(localeAtom);
 }
 
-const localeStore = createStore();
-
-export const LocaleProvider: React.FC<PropsWithChildren> = (props) => {
-    return <Provider store={localeStore}>{props.children}</Provider>
-}
-
 export function getLocale(module: string) {
-    const locale = localeStore.get(localeAtom);
+    const locale = atomStore.get(localeAtom);
     const message = window.locales[locale];
     const mod = message[module];
     return (id: string) => {

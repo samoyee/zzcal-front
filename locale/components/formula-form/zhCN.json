@@ -1,5 +1,6 @@
 {
     "button": "开始计算",
+    "clear": "清空",
     "loading": "计算中...",
     "required": "${label}是必填的！"
 }

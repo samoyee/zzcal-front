@@ -7,6 +7,7 @@ import Login from "@/pc/pages/login";
 import Register from "@/pc/pages/register";
 import { redirect } from "react-router";
 import { createBrowserRouter } from "react-router-dom";
+import { setResult } from "./components/result";
 
 const router = createBrowserRouter([
     {
@@ -77,5 +78,10 @@ const router = createBrowserRouter([
         Component: Page404,
     }
 ])
+
+
+router.subscribe(() => {
+    setResult(null);
+})
 
 export default router;
