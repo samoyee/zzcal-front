@@ -38,7 +38,7 @@ const Register: React.FC = () => {
             if (formData.confirmPassword !== formData.password) throw new Error(getLocale('confirmPasswordError'));
             await auth.register(formData)
             register(null);
-        } catch (err: unknown) {
+        } catch (err) {
             if (err instanceof ZzcalError) {
                 const error = err.error as Record<string, { errors: string[] }>;
                 const fields = Object.keys(error)

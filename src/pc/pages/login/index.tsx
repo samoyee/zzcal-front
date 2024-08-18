@@ -40,11 +40,7 @@ const Login: React.FC = () => {
                 <Form.Item name="username">
                     <Input className='login-input' prefix={<UserOutlined />} placeholder={getLocale('usernameRequired')} autoComplete="off" />
                 </Form.Item>
-                <Form.Item name="password" extra={
-                    <div className='login-forget'>
-                        {/* <a onClick={() => navigate("/forget")}>{getLocale('forgetBtn')}</a> */}
-                    </div>
-                }>
+                <Form.Item name="password">
                     <Input.Password className='login-input' prefix={<LockOutlined />} placeholder={getLocale('passwordRequired')} autoComplete='off' />
                 </Form.Item>
             </Form>

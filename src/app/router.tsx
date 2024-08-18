@@ -55,17 +55,24 @@ const router = createBrowserRouter([
         },
         children: [
             {
-                path: '/formula/welcome',
+                path: '/zzcal/formula/welcome',
                 Component: Welcome,
             },
             {
-                path: '/formula/:formula',
+                path: '/zzcal/formula/:formula',
                 Component: Formula,
             }
         ]
     },
     {
-        path: '/zzcal/*',
+        path: '*',
+        loader: async () => {
+            if (!auth.getToken()) {
+                return redirect('/zzcal/login')
+            }
+            await auth.getUser();
+            return { user: auth.user };
+        },
         Component: Page404,
     }
 ])
