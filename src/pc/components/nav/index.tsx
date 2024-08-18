@@ -44,7 +44,7 @@ const FormulaLink: React.FC<{ formula: string; disabled?: boolean; } & PropsWith
     return <div
         onClick={() => {
             if (disabled) return
-            navigate(`/zzcal/formula/${formula}`)
+            navigate(`/formula/${formula}`)
         }}
         className={classNames('nav-item', { active: location.pathname.split('/').slice(-1)[0] === formula, disabled })}>{children}</div>
 }

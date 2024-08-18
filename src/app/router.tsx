@@ -10,56 +10,55 @@ import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
     {
-        path: '/zzcal/register',
+        path: '/register',
         action: async () => {
-            return redirect('/zzcal/formula/welcome');
+            return redirect('/formula/welcome');
         },
         loader: () => {
             if (auth.getToken()) {
-                return redirect('/zzcal/formula/welcome')
+                return redirect('/formula/welcome')
             }
             return null
         },
         Component: Register
     },
     {
-        path: '/zzcal/login',
+        path: '/login',
         action: async () => {
-            return redirect('/zzcal/formula/welcome');
+            return redirect('/formula/welcome');
         },
         loader: () => {
             if (auth.getToken()) {
-                return redirect('/zzcal/formula/welcome')
+                return redirect('/formula/welcome')
             }
             return null
         },
         Component: Login
     },
     {
-        path: "/zzcal/logout",
+        path: "/logout",
         action: async () => {
             await auth.signout();
-            return redirect("/zzcal/login");
+            return redirect("/login");
         }
     },
     {
         id: "root",
-        path: '/zzcal',
         Component: FormulaLayout,
         loader: async () => {
             if (!auth.getToken()) {
-                return redirect('/zzcal/login')
+                return redirect('/login')
             }
             await auth.getUser();
             return { user: auth.user };
         },
         children: [
             {
-                path: '/zzcal/formula/welcome',
+                path: '/formula/welcome',
                 Component: Welcome,
             },
             {
-                path: '/zzcal/formula/:formula',
+                path: '/formula/:formula',
                 Component: Formula,
             }
         ]
@@ -68,7 +67,7 @@ const router = createBrowserRouter([
         path: '*',
         loader: async () => {
             if (!auth.getToken()) {
-                return redirect('/zzcal/login')
+                return redirect('/login')
             }
             await auth.getUser();
             return { user: auth.user };

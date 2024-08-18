@@ -36,7 +36,7 @@ export default defineConfig({
       ]
     }
   },
-  base: '/zzcal',
+  base: '/',
   server: {
     proxy: {
       '/api': {

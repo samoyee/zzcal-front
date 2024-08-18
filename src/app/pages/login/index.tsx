@@ -40,7 +40,7 @@ const Login: React.FC = () => {
             </Form>
             <Button onClick={onSubmit} color='primary' block className='login-btn'>{getLocale('loginBtn')}</Button>
             <div className='login-create-count'>
-                <a onClick={() => navigate('/zzcal/register')}>{getLocale('createBtn')}</a>
+                <a onClick={() => navigate('/register')}>{getLocale('createBtn')}</a>
             </div>
         </div>
     </div>;

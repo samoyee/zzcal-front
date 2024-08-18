@@ -151,7 +151,7 @@ const Register: React.FC = () => {
             </Form>
             <Button onClick={onSubmit} type='primary' className='register-btn'>{getLocale('registerBtn')}</Button>
             <div className='register-back'>
-                <a onClick={() => navigate("/zzcal/login")}>{getLocale('backBtn')}</a>
+                <a onClick={() => navigate("/login")}>{getLocale('backBtn')}</a>
             </div>
         </div>
     </div>;
