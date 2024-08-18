@@ -14,7 +14,7 @@ const Formula: React.FC = () => {
     description={getLocale('description')}
     initialValues={{
       mode: 'not',
-      resLensC: 20,
+      resLensC: 0,
     }}
     request={(data) => post<Record<string, number>>({
       url: '/calculate/zzar2',

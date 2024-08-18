@@ -111,9 +111,9 @@ const Register: React.FC = () => {
                         value: 'country_name_cn',
                     }}
                     filterOption={(input, option) => {
-                        return option?.ab === input
-                            || option?.country_name_cn.includes(input)
-                            || option?.country_name_en === input;
+                        return (option as any)?.ab === input
+                            || (option as any)?.country_name_cn.includes(input)
+                            || (option as any)?.country_name_en === input;
                     }}
                 />
             </Form.Item>
